@@ -1,18 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { MapPin, Phone, Mail, Clock, ArrowRight, Instagram, Linkedin, Facebook, Twitter, ShieldCheck } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowRight, Linkedin, Facebook, Globe } from 'lucide-react';
+import { useEnquiry } from '@/context/EnquiryContext';
 
-interface FooterProps {
-  onOpenQuote: () => void;
-}
+export default function Footer() {
+  const { openEnquiry } = useEnquiry();
 
-export default function Footer({ onOpenQuote }: FooterProps) {
   return (
     <footer className="bg-[#191512] text-[#E5DCD3] pt-16 pb-8 border-t border-[#332A24]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[#332A24]">
-          {/* Company Column */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#8B5E3C] to-[#C79A63] flex items-center justify-center text-white font-serif font-bold text-xl shadow-lg">
@@ -23,38 +21,47 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                   RPSS TIMBERS
                 </span>
                 <span className="block text-[10px] uppercase tracking-widest font-semibold text-[#C79A63]">
-                  &amp; Interiors
+                  Global Timber &amp; Product Sourcing
                 </span>
               </div>
             </div>
 
             <p className="text-sm text-[#A89C92] leading-relaxed max-w-sm">
-              India’s premier importer and nationwide supplier of Grade-A Meranti Wood, seasoned structural hardwoods, and customized interior timber solutions. Built on trust, sustainability, and craftsmanship.
+              Connecting International &amp; Australian Suppliers with Indian Markets. With a legacy
+              spanning more than 50 years in the timber trade, RPSS Timbers brings established Indian
+              market knowledge together with an expanding international sourcing network.
             </p>
 
             <div className="pt-2 flex items-center gap-3 text-xs text-[#C79A63]">
-              <ShieldCheck className="w-4 h-4" />
-              <span>Certified Sustainable Forestry Sourcing</span>
+              <Globe className="w-4 h-4" />
+              <span>www.rpsstimbers.com</span>
             </div>
 
-            {/* Social Links */}
             <div className="flex items-center space-x-3 pt-2">
-              <a href="#" aria-label="LinkedIn" className="p-2 rounded-lg bg-[#28221D] hover:bg-[#C79A63] hover:text-black transition-colors text-white">
+              <a
+                href="https://www.rpsstimbers.com"
+                aria-label="Website"
+                className="p-2 rounded-lg bg-[#28221D] hover:bg-[#C79A63] hover:text-black transition-colors text-white"
+              >
+                <Globe className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="p-2 rounded-lg bg-[#28221D] hover:bg-[#C79A63] hover:text-black transition-colors text-white"
+              >
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a href="#" aria-label="Instagram" className="p-2 rounded-lg bg-[#28221D] hover:bg-[#C79A63] hover:text-black transition-colors text-white">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href="#" aria-label="Facebook" className="p-2 rounded-lg bg-[#28221D] hover:bg-[#C79A63] hover:text-black transition-colors text-white">
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="p-2 rounded-lg bg-[#28221D] hover:bg-[#C79A63] hover:text-black transition-colors text-white"
+              >
                 <Facebook className="w-4 h-4" />
-              </a>
-              <a href="#" aria-label="Twitter" className="p-2 rounded-lg bg-[#28221D] hover:bg-[#C79A63] hover:text-black transition-colors text-white">
-                <Twitter className="w-4 h-4" />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
           <div className="space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white border-b border-[#332A24] pb-2">
               Quick Navigation
@@ -66,115 +73,151 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#C79A63] transition-colors flex items-center gap-1.5">
+                <Link
+                  href="/about"
+                  className="hover:text-[#C79A63] transition-colors flex items-center gap-1.5"
+                >
                   <ArrowRight className="w-3.5 h-3.5 text-[#C79A63]" /> About RPSS
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="hover:text-[#C79A63] transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3.5 h-3.5 text-[#C79A63]" /> Timber Products
+                <Link
+                  href="/products"
+                  className="hover:text-[#C79A63] transition-colors flex items-center gap-1.5"
+                >
+                  <ArrowRight className="w-3.5 h-3.5 text-[#C79A63]" /> Products &amp; Sourcing
                 </Link>
               </li>
               <li>
-                <Link href="/meranti-wood" className="hover:text-[#C79A63] transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3.5 h-3.5 text-[#C79A63]" /> Meranti Showcase
+                <Link
+                  href="/how-we-work"
+                  className="hover:text-[#C79A63] transition-colors flex items-center gap-1.5"
+                >
+                  <ArrowRight className="w-3.5 h-3.5 text-[#C79A63]" /> How We Work
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className="hover:text-[#C79A63] transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3.5 h-3.5 text-[#C79A63]" /> Project Gallery
-                </Link>
-              </li>
-              <li>
-                <Link href="/why-choose-us" className="hover:text-[#C79A63] transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3.5 h-3.5 text-[#C79A63]" /> Why Choose Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-[#C79A63] transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3.5 h-3.5 text-[#C79A63]" /> Timber FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-[#C79A63] transition-colors flex items-center gap-1.5">
-                  <ArrowRight className="w-3.5 h-3.5 text-[#C79A63]" /> Contact Us
+                <Link
+                  href="/contact"
+                  className="hover:text-[#C79A63] transition-colors flex items-center gap-1.5"
+                >
+                  <ArrowRight className="w-3.5 h-3.5 text-[#C79A63]" /> Work With RPSS
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Timber Solutions */}
           <div className="space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white border-b border-[#332A24] pb-2">
-              Wood Solutions
+              Sourcing Focus
             </h4>
             <ul className="space-y-2.5 text-sm text-[#A89C92]">
               <li>
-                <Link href="/meranti-wood" className="hover:text-[#C79A63] transition-colors">
-                  Red &amp; Dark Meranti Wood
+                <Link href="/products" className="hover:text-[#C79A63] transition-colors">
+                  Timber &amp; Wood Products
                 </Link>
               </li>
               <li>
-                <Link href="/products?cat=hardwood" className="hover:text-[#C79A63] transition-colors">
-                  Kiln-Dried Hardwoods
+                <Link href="/products" className="hover:text-[#C79A63] transition-colors">
+                  Plywood &amp; Wood Products
                 </Link>
               </li>
               <li>
-                <Link href="/products?cat=construction" className="hover:text-[#C79A63] transition-colors">
-                  Construction Shuttering Wood
+                <Link href="/products" className="hover:text-[#C79A63] transition-colors">
+                  Agricultural Products
                 </Link>
               </li>
               <li>
-                <Link href="/products?cat=interior" className="hover:text-[#C79A63] transition-colors">
-                  Architectural Interior Panels
+                <Link href="/products" className="hover:text-[#C79A63] transition-colors">
+                  Buyer-Specific Sourcing
                 </Link>
               </li>
               <li>
-                <Link href="/products?cat=furniture" className="hover:text-[#C79A63] transition-colors">
-                  Furniture-Grade Cured Planks
-                </Link>
-              </li>
-              <li>
-                <button onClick={onOpenQuote} className="text-[#C79A63] hover:underline font-medium text-left">
-                  + Custom Sawing &amp; Milling
+                <button
+                  onClick={() => openEnquiry('product')}
+                  className="text-[#C79A63] hover:underline font-medium text-left"
+                >
+                  ENQUIRE ABOUT A PRODUCT
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div className="space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white border-b border-[#332A24] pb-2">
-              Corporate Office
+              Contact RPSS Timbers
             </h4>
             <ul className="space-y-3 text-sm text-[#A89C92]">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C79A63] shrink-0 mt-0.5" />
-                <span>Timber Market Area, Yamunanagar, Haryana &amp; Kirti Nagar, New Delhi, India</span>
+                <div>
+                  <p>
+                    <strong className="text-white">Australia:</strong> Canberra, ACT — Australian
+                    sourcing operation
+                  </p>
+                  <p>
+                    <strong className="text-white">India:</strong> Amritsar, Punjab | Jammu &amp;
+                    Kashmir
+                  </p>
+                </div>
               </li>
-              <li className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#C79A63] shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-white transition-colors">+91 98765 43210</a>
+              <li className="flex items-start gap-2.5">
+                <Phone className="w-4 h-4 text-[#C79A63] shrink-0 mt-0.5" />
+                <div>
+                  <p>
+                    <a href="tel:+61431764492" className="hover:text-white transition-colors">
+                      <strong className="text-white">Australia:</strong> +61 431 764 492
+                    </a>
+                  </p>
+                  <p>
+                    <a href="tel:+919419184550" className="hover:text-white transition-colors">
+                      <strong className="text-white">India:</strong> +91 94191 84550
+                    </a>
+                  </p>
+                </div>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#C79A63] shrink-0" />
-                <a href="mailto:sales@rpsstimbers.com" className="hover:text-white transition-colors">sales@rpsstimbers.com</a>
+                <a
+                  href="mailto:puneet.arora2702@gmail.com"
+                  className="hover:text-white transition-colors"
+                >
+                  puneet.arora2702@gmail.com
+                </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-[#C79A63] shrink-0" />
-                <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
+                <Globe className="w-4 h-4 text-[#C79A63] shrink-0" />
+                <a
+                  href="https://www.rpsstimbers.com"
+                  className="hover:text-white transition-colors"
+                >
+                  www.rpsstimbers.com
+                </a>
+              </li>
+              <li>
+                <button
+                  onClick={() => openEnquiry('contact')}
+                  className="text-[#C79A63] hover:underline font-medium"
+                >
+                  CONTACT RPSS
+                </button>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom copyright & attribution */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-[#8A7E74] gap-4">
-          <p>© {new Date().getFullYear()} RPSS Timbers and Interiors. All Rights Reserved.</p>
+          <p>
+            © {new Date().getFullYear()} RPSS Timbers. All Rights Reserved. Global Timber &amp;
+            Product Sourcing.
+          </p>
           <div className="flex items-center space-x-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Supply</a>
-            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
+            <a href="#" className="hover:text-white transition-colors">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-white transition-colors">
+              Terms of Trade
+            </a>
           </div>
         </div>
       </div>

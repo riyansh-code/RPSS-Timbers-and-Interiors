@@ -13,6 +13,14 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: '/why-choose-us', destination: '/how-we-work', permanent: true },
+      { source: '/faq', destination: '/how-we-work', permanent: true },
+      { source: '/gallery', destination: '/products', permanent: true },
+      { source: '/meranti-wood', destination: '/products', permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -1,59 +1,22 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { HardHat, Armchair, Palette, Compass, Building, Hotel, Landmark, Home, ArrowRight } from 'lucide-react';
+import { Globe, Users, ArrowRight, CheckCircle2, Building2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function IndustriesServed() {
-  const industries = [
-    {
-      name: 'Construction Contractors',
-      icon: HardHat,
-      desc: 'High-strength shuttering timber, formwork runners, and scaffolding lumber.',
-      tag: 'Bulk Supply'
-    },
-    {
-      name: 'Furniture Craftsmen',
-      icon: Armchair,
-      desc: 'Kiln-dried, knot-free seasoned planks ideal for tables, cabinetry & carving.',
-      tag: 'Furniture Grade'
-    },
-    {
-      name: 'Interior Designers',
-      icon: Palette,
-      desc: 'Fluted wall paneling, ceiling baffles, and decorative architectural wood trim.',
-      tag: 'Design Solutions'
-    },
-    {
-      name: 'Architectural Firms',
-      icon: Compass,
-      desc: 'Precision CAD-milled wood frames, custom moldings, and large span trusses.',
-      tag: 'Bespoke Specifications'
-    },
-    {
-      name: 'Commercial Builders',
-      icon: Building,
-      desc: 'Heavy structural hardwood beams and fire-retardant commercial joinery.',
-      tag: 'Structural Grade'
-    },
-    {
-      name: 'Hotels & Hospitality',
-      icon: Hotel,
-      desc: 'Luxury lobby wall cladding, boutique doors, and durable patio timber.',
-      tag: 'Luxury Grade'
-    },
-    {
-      name: 'Commercial Real Estate',
-      icon: Landmark,
-      desc: 'Corporate office fit-outs, executive boardrooms, and acoustic wood paneling.',
-      tag: 'Corporate Solutions'
-    },
-    {
-      name: 'Residential Projects',
-      icon: Home,
-      desc: 'Bespoke entry doors, window shutters, hardwood flooring, and pergolas.',
-      tag: 'Residential Solutions'
-    }
+  const supplierAssistance = [
+    'Understanding Indian buyer requirements',
+    'Identifying genuine product opportunities',
+    'Connecting suitable suppliers with Indian buyers',
+    'Facilitating commercial communication',
+    'Developing long-term sourcing relationships'
+  ];
+
+  const buyerObjectives = [
+    'Better access.',
+    'Broader sourcing options.',
+    'Direct international connections.'
   ];
 
   return (
@@ -63,60 +26,143 @@ export default function IndustriesServed() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="subtitle-badge">
-            <Building className="w-4 h-4 text-[#8B5E3C]" /> Industries &amp; Clients
+            <Building2 className="w-4 h-4 text-[#8B5E3C]" /> Global Trade Network
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--text-main)]">
-            Empowering Projects Across India
+            Connecting Suppliers &amp; Buyers Worldwide
           </h2>
           <p className="text-base text-[var(--text-muted)]">
-            From high-rise commercial towers to artisan woodworking studios, we tailor wood supply to every sector.
+            Bridging international suppliers with established Indian buyers through experienced sourcing and trade facilitation.
           </p>
         </div>
 
-        {/* Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {industries.map((ind, idx) => {
-            const IconComp = ind.icon;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                whileHover={{ y: -6 }}
-                className="p-6 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-color)] hover:border-[#C79A63] shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="p-3 rounded-xl bg-[var(--brand-primary)] text-white group-hover:bg-[#C79A63] group-hover:text-black transition-colors">
-                      <IconComp className="w-6 h-6" />
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[var(--bg-card)] text-[var(--brand-secondary)] border border-[var(--border-color)]">
-                      {ind.tag}
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-serif font-bold text-[var(--text-main)] group-hover:text-[var(--brand-primary)] transition-colors">
-                    {ind.name}
+        {/* 2-Column Split: Section 4 & Section 5 */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          {/* Section 4: FOR INTERNATIONAL & AUSTRALIAN SUPPLIERS */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="p-8 sm:p-10 rounded-3xl bg-[var(--bg-primary)] border border-[var(--border-color)] shadow-lg hover:border-[#C79A63] transition-all flex flex-col justify-between space-y-6"
+          >
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="p-3 rounded-2xl bg-[var(--brand-primary)] text-white">
+                  <Globe className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-serif font-bold text-[var(--text-main)]">
+                    FOR INTERNATIONAL &amp; AUSTRALIAN SUPPLIERS
                   </h3>
-
-                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                    {ind.desc}
-                  </p>
+                  <h4 className="text-sm font-semibold text-[#C79A63]">
+                    Looking to access the Indian market?
+                  </h4>
                 </div>
+              </div>
 
-                <div className="pt-4 border-t border-[var(--border-color)] mt-4">
-                  <Link href="/products" className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--brand-primary)] group-hover:text-[#C79A63] transition-colors">
-                    Explore Relevant Wood <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                <strong className="font-bold text-[var(--text-main)]">RPSS Timbers provides international and Australian suppliers with a connection to an established Indian timber market and an experienced sourcing network.</strong>
+              </p>
+
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                <strong className="font-bold text-[var(--text-main)]">We understand the requirements of Indian buyers and can help suitable suppliers explore opportunities to supply products into India.</strong>
+              </p>
+
+              <div className="space-y-3 pt-2">
+                <p className="text-xs uppercase tracking-wider font-bold text-[var(--brand-primary)]">
+                  We can assist with:
+                </p>
+                <ul className="space-y-2 text-sm text-[var(--text-main)]">
+                  {supplierAssistance.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#C79A63] shrink-0 mt-0.5" />
+                      <span className="font-bold">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="text-sm font-bold text-[var(--brand-primary)] pt-2">
+                Become a sourcing partner with RPSS Timbers.
+              </p>
+            </div>
+
+            <div className="pt-6 border-t border-[var(--border-color)]">
+              <Link
+                href="/contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-[#8B5E3C] via-[#C79A63] to-[#8B5E3C] text-black font-bold text-sm shadow-md hover:scale-105 transition-all"
+              >
+                SOURCE WITH US <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Section 5: FOR INDIAN BUYERS */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="p-8 sm:p-10 rounded-3xl bg-[var(--bg-primary)] border border-[var(--border-color)] shadow-lg hover:border-[#C79A63] transition-all flex flex-col justify-between space-y-6"
+          >
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="p-3 rounded-2xl bg-[#C79A63] text-black">
+                  <Users className="w-6 h-6" />
                 </div>
-              </motion.div>
-            );
-          })}
+                <div>
+                  <h3 className="text-2xl font-serif font-bold text-[var(--text-main)]">
+                    FOR INDIAN BUYERS
+                  </h3>
+                  <h4 className="text-sm font-semibold text-[#C79A63]">
+                    Looking beyond traditional supply channels?
+                  </h4>
+                </div>
+              </div>
+
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                <strong className="font-bold text-[var(--text-main)]">RPSS Timbers helps Indian buyers access Australian and international suppliers and explore sourcing opportunities beyond conventional domestic channels.</strong>
+              </p>
+
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                <strong className="font-bold text-[var(--text-main)]">Our experience in the Indian timber market allows us to understand buyer requirements while our expanding international network enables us to search for suitable sources closer to origin.</strong>
+              </p>
+
+              <div className="space-y-3 pt-2">
+                <p className="text-xs uppercase tracking-wider font-bold text-[var(--brand-primary)]">
+                  Our objective:
+                </p>
+                <ul className="space-y-2 text-sm text-[var(--text-main)]">
+                  {buyerObjectives.map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#C79A63] shrink-0" />
+                      <span className="font-bold">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="text-sm font-bold text-[var(--brand-primary)] pt-2">
+                If you have a specific product or sourcing requirement, talk to us.
+              </p>
+            </div>
+
+            <div className="pt-6 border-t border-[var(--border-color)]">
+              <Link
+                href="/contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[var(--brand-primary)] hover:bg-[#8B5E3C] text-white font-bold text-sm shadow-md hover:scale-105 transition-all"
+              >
+                SUBMIT YOUR REQUIREMENT <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </motion.div>
+
         </div>
 
       </div>
     </section>
   );
 }
+

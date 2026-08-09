@@ -4,17 +4,15 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Trees as Tree, PhoneCall, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 import DarkModeToggle from '../ui/DarkModeToggle';
+import { useEnquiry } from '@/context/EnquiryContext';
 
-interface NavbarProps {
-  onOpenQuote: () => void;
-}
-
-export default function Navbar({ onOpenQuote }: NavbarProps) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { openEnquiry } = useEnquiry();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,13 +24,10 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Products', href: '/products' },
-    { name: 'Meranti Wood', href: '/meranti-wood' },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'Why Choose Us', href: '/why-choose-us' },
-    { name: 'FAQ', href: '/faq' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'About RPSS', href: '/about' },
+    { name: 'Products & Sourcing', href: '/products' },
+    { name: 'How We Work', href: '/how-we-work' },
+    { name: 'Work With RPSS', href: '/contact' },
   ];
 
   return (
@@ -44,22 +39,28 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#5C3A21] to-[#C79A63] flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
             <span className="font-serif font-bold text-xl tracking-tighter">R</span>
           </div>
           <div>
-            <span className={`block font-serif font-bold text-lg sm:text-xl tracking-tight ${scrolled ? 'text-[var(--text-main)]' : 'text-white'}`}>
+            <span
+              className={`block font-serif font-bold text-lg sm:text-xl tracking-tight ${
+                scrolled ? 'text-[var(--text-main)]' : 'text-white'
+              }`}
+            >
               RPSS TIMBERS
             </span>
-            <span className={`block text-[10px] uppercase tracking-widest font-semibold ${scrolled ? 'text-[var(--brand-accent)]' : 'text-[#C79A63]'}`}>
-              &amp; Interiors
+            <span
+              className={`block text-[10px] uppercase tracking-widest font-semibold ${
+                scrolled ? 'text-[var(--brand-accent)]' : 'text-[#C79A63]'
+              }`}
+            >
+              Global Timber &amp; Product Sourcing
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -83,19 +84,16 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
           })}
         </nav>
 
-        {/* Header Right Actions */}
         <div className="hidden lg:flex items-center gap-4">
           <DarkModeToggle />
-
           <button
-            onClick={onOpenQuote}
+            onClick={() => openEnquiry('contact')}
             className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#5C3A21] to-[#8B5E3C] hover:from-[#8B5E3C] hover:to-[#5C3A21] text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
           >
-            Request Quote
+            ENQUIRE
           </button>
         </div>
 
-        {/* Mobile Toggle Button */}
         <div className="flex lg:hidden items-center gap-3">
           <DarkModeToggle />
           <button
@@ -108,7 +106,6 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -141,11 +138,11 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    onOpenQuote();
+                    openEnquiry('contact');
                   }}
                   className="w-full py-3.5 rounded-xl bg-[var(--brand-primary)] text-white text-center font-bold shadow-md hover:bg-[#8B5E3C] transition-colors"
                 >
-                  Request Quote
+                  ENQUIRE
                 </button>
               </div>
             </div>

@@ -16,30 +16,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'RPSS Timbers & Interiors | Premium Meranti Wood & Hardwood Supplier India',
-  description: 'RPSS Timbers and Interiors is India’s premier supplier of Grade-A Meranti wood, seasoned structural hardwoods, furniture lumber, and architectural wood panels for construction and luxury interiors.',
+  title: 'RPSS Timbers | Global Timber & Product Sourcing',
+  description:
+    'Connecting International & Australian Suppliers with Indian Markets. With a legacy spanning more than 50 years in the timber trade, RPSS Timbers brings established Indian market knowledge together with an expanding international sourcing network.',
   keywords: [
-    'Meranti Wood India',
     'RPSS Timbers',
-    'Timber Supplier Yamunanagar',
-    'Kiln Dried Hardwood',
-    'Door Frame Timber',
-    'Furniture Wood Supplier',
-    'Construction Lumber India',
-    'Architectural Wood Panels'
+    'Global Timber Sourcing',
+    'Australian Timber Exporters',
+    'Indian Timber Wholesale',
+    'Amritsar Timber Market',
+    'Jammu Timber Market',
+    'Canberra Timber Sourcing',
+    'Pine and Hardwood Sourcing',
   ],
-  authors: [{ name: 'RPSS Timbers & Interiors' }],
+  authors: [{ name: 'RPSS Timbers' }],
   openGraph: {
-    title: 'RPSS Timbers & Interiors | Premium Timber Solutions Built on Trust',
-    description: 'Supplying high-quality timber and Meranti wood across India for construction, interiors, furniture, and commercial projects.',
-    url: 'https://rpsstimbers.com',
-    siteName: 'RPSS Timbers & Interiors',
+    title: 'RPSS Timbers | Global Timber & Product Sourcing',
+    description: 'Connecting International & Australian Suppliers with Indian Markets.',
+    url: 'https://www.rpsstimbers.com',
+    siteName: 'RPSS Timbers',
     images: [
       {
         url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
         width: 1200,
         height: 630,
-        alt: 'RPSS Timbers & Interiors Warehouse',
+        alt: 'RPSS Timbers Global Sourcing',
       },
     ],
     locale: 'en_IN',
@@ -49,21 +50,33 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'RPSS Timbers and Interiors',
-  description: 'Supplying high-quality timber and Meranti wood across India for construction, interiors, furniture, and commercial projects.',
-  url: 'https://rpsstimbers.com',
-  telephone: '+919876543210',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Timber Market Area',
-    addressLocality: 'Yamunanagar',
-    addressRegion: 'Haryana',
-    postalCode: '135001',
-    addressCountry: 'IN',
-  },
-  openingHours: 'Mo-Sa 09:00-19:00',
-  priceRange: '₹₹₹',
+  '@type': 'Organization',
+  name: 'RPSS Timbers',
+  description: 'Connecting International & Australian Suppliers with Indian Markets.',
+  url: 'https://www.rpsstimbers.com',
+  email: 'puneet.arora2702@gmail.com',
+  telephone: ['+61431764492', '+919419184550'],
+  address: [
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Canberra',
+      addressRegion: 'ACT',
+      addressCountry: 'AU',
+      description: 'Australian sourcing operation',
+    },
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Amritsar',
+      addressRegion: 'Punjab',
+      addressCountry: 'IN',
+    },
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Jammu',
+      addressRegion: 'Jammu and Kashmir',
+      addressCountry: 'IN',
+    },
+  ],
 };
 
 export default function RootLayout({

@@ -6,10 +6,10 @@ import Image from 'next/image';
 
 export default function CompanyIntro() {
   const stats = [
-    { value: '500+', label: 'Projects Completed', icon: Building2 },
-    { value: '150+', label: 'Commercial Clients', icon: Users },
-    { value: '20+', label: 'Wood & Spec Types', icon: Tree },
-    { value: '100%', label: 'Quality Checked', icon: CheckCircle2 },
+    { value: '50+', label: 'Years Legacy', icon: Building2 },
+    { value: '1974', label: 'Established', icon: Award },
+    { value: '2', label: 'Showroom Depots', icon: Tree },
+    { value: 'Global', label: 'Sourcing Network', icon: Users },
   ];
 
   return (
@@ -40,7 +40,7 @@ export default function CompanyIntro() {
                   Heritage of Trust &amp; Craftsmanship
                 </span>
                 <p className="text-sm font-serif italic text-white/90">
-                  &ldquo;Over two decades of precision seasoning, sustainable sourcing, and unwavering commitment to India’s leading builders.&rdquo;
+                  &ldquo;Connecting reliable suppliers and exporters across Australia and global markets with established buyers in India.&rdquo;
                 </p>
               </div>
             </motion.div>
@@ -54,11 +54,11 @@ export default function CompanyIntro() {
               className="absolute -bottom-8 -right-4 sm:right-6 bg-[var(--brand-primary)] text-white p-6 rounded-2xl shadow-2xl border-2 border-[var(--brand-accent)] hidden sm:flex items-center gap-4 max-w-xs"
             >
               <div className="p-3 bg-[#C79A63] text-black rounded-xl font-bold font-serif text-2xl">
-                25+
+                50+
               </div>
               <div>
-                <h4 className="font-serif font-bold text-lg text-white">Years of Expertise</h4>
-                <p className="text-xs text-white/80">In Timber Import &amp; Seasoning</p>
+                <h4 className="font-serif font-bold text-lg text-white">Years of Legacy</h4>
+                <p className="text-xs text-white/80">Established in 1974</p>
               </div>
             </motion.div>
           </div>
@@ -73,20 +73,28 @@ export default function CompanyIntro() {
               className="space-y-4"
             >
               <div className="subtitle-badge">
-                <Award className="w-4 h-4 text-[#8B5E3C]" /> About RPSS Timbers
+                <Award className="w-4 h-4 text-[#8B5E3C]" /> Our Heritage &amp; Journey
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--text-main)] leading-tight">
-                Crafting Excellence in <br />
-                <span className="text-[var(--brand-primary)]">Timber &amp; Interior Wood.</span>
+                FROM A TRUSTED INDIAN TIMBER BUSINESS <br />
+                <span className="text-[var(--brand-primary)]">TO A GLOBAL SOURCING NETWORK</span>
               </h2>
 
               <p className="text-base text-[var(--text-muted)] leading-relaxed">
-                RPSS Timbers and Interiors is a trusted leader in India’s timber industry. We specialize in importing, kiln-drying, and precision milling high-grade Meranti wood, seasoned structural hardwoods, and architectural wood products.
+                RPSS Timbers was established in <strong className="font-semibold text-[var(--text-main)]">1974 by Mr. Sham Sunder Arora</strong> and has grown into an established timber wholesale business serving customers across North India.
               </p>
 
               <p className="text-base text-[var(--text-muted)] leading-relaxed">
-                Whether you are constructing multi-story commercial towers, designing luxury residential interiors, or crafting bespoke artisan furniture, our timber is meticulously selected and quality-checked to meet international structural standards.
+                With established <strong className="font-semibold text-[var(--text-main)]">warehouses and showrooms in Amritsar, Punjab and Jammu</strong>, RPSS has developed a strong understanding of timber products, buyer requirements and the Indian market.
+              </p>
+
+              <p className="text-base text-[var(--text-muted)] leading-relaxed">
+                Our next chapter is focused on taking that experience beyond traditional sourcing channels.
+              </p>
+
+              <p className="text-base text-[var(--text-muted)] leading-relaxed">
+                Rather than relying solely on intermediaries, our vision is to develop <strong className="font-semibold text-[var(--text-main)]">direct relationships with exporters and suppliers across different continents</strong>, creating broader sourcing opportunities and bringing our Indian buyers closer to the original source.
               </p>
             </motion.div>
 
@@ -101,16 +109,16 @@ export default function CompanyIntro() {
               <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-sm">
                 <ShieldCheck className="w-5 h-5 text-[#C79A63] shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-sm font-bold text-[var(--text-main)]">Reliable Supply Chain</h4>
-                  <p className="text-xs text-[var(--text-muted)]">Uninterrupted bulk volume availability</p>
+                  <h4 className="text-sm font-bold text-[var(--text-main)]">Established Indian Presence</h4>
+                  <p className="text-xs text-[var(--text-muted)]">Warehouses &amp; Showrooms in Amritsar &amp; Jammu</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-sm">
                 <CheckCircle2 className="w-5 h-5 text-[#C79A63] shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-sm font-bold text-[var(--text-main)]">100% Seasoned Wood</h4>
-                  <p className="text-xs text-[var(--text-muted)]">Computerized kiln-curing preventing warp</p>
+                  <h4 className="text-sm font-bold text-[var(--text-main)]">Direct International Sourcing</h4>
+                  <p className="text-xs text-[var(--text-muted)]">Connecting exporters with Indian buyers</p>
                 </div>
               </div>
             </motion.div>
@@ -146,3 +154,4 @@ export default function CompanyIntro() {
     </section>
   );
 }
+
