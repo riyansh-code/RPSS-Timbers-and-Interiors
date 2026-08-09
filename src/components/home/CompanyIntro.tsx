@@ -8,7 +8,7 @@ export default function CompanyIntro() {
   const stats = [
     { value: '50+', label: 'Years Legacy', icon: Building2 },
     { value: '1974', label: 'Established', icon: Award },
-    { value: '2', label: 'Showroom Depots', icon: Tree },
+    { value: 'AU+IN', label: 'Market Presence', icon: Tree },
     { value: 'Global', label: 'Sourcing Network', icon: Users },
   ];
 
@@ -27,7 +27,7 @@ export default function CompanyIntro() {
               className="relative h-[450px] sm:h-[520px] rounded-3xl overflow-hidden shadow-2xl border-4 border-[var(--bg-card)]"
             >
               <Image
-                src="https://images.unsplash.com/photo-1546484475-7f7bd55792da?auto=format&fit=crop&w=1200&q=80"
+                src="/images/ov-kd-pine.jpg"
                 alt="RPSS Premium Wood Processing Yard"
                 fill
                 className="object-cover"
@@ -86,7 +86,7 @@ export default function CompanyIntro() {
               </p>
 
               <p className="text-base text-[var(--text-muted)] leading-relaxed">
-                With established <strong className="font-semibold text-[var(--text-main)]">warehouses and showrooms in Amritsar, Punjab and Jammu</strong>, RPSS has developed a strong understanding of timber products, buyer requirements and the Indian market.
+                With established operations in <strong className="font-semibold text-[var(--text-main)]">Jammu &amp; Kashmir, Amritsar and Gandhidham (Gujarat)</strong>, RPSS has developed a strong understanding of timber products, buyer requirements and the Indian market.
               </p>
 
               <p className="text-base text-[var(--text-muted)] leading-relaxed">

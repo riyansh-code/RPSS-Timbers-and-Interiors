@@ -119,12 +119,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/products" className="hover:text-[#C79A63] transition-colors">
-                  Plywood &amp; Wood Products
-                </Link>
-              </li>
-              <li>
-                <Link href="/products" className="hover:text-[#C79A63] transition-colors">
-                  Agricultural Products
+                  Plywood &amp; Allied Products
                 </Link>
               </li>
               <li>
@@ -152,12 +147,12 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 text-[#C79A63] shrink-0 mt-0.5" />
                 <div>
                   <p>
-                    <strong className="text-white">Australia:</strong> Canberra, ACT — Australian
-                    sourcing operation
-                  </p>
-                  <p>
                     <strong className="text-white">India:</strong> Amritsar, Punjab | Jammu &amp;
                     Kashmir
+                  </p>
+                  <p>
+                    <strong className="text-white">Australia:</strong> Canberra, ACT — Australian
+                    sourcing operation
                   </p>
                 </div>
               </li>
@@ -165,13 +160,13 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-[#C79A63] shrink-0 mt-0.5" />
                 <div>
                   <p>
-                    <a href="tel:+61431764492" className="hover:text-white transition-colors">
-                      <strong className="text-white">Australia:</strong> +61 431 764 492
+                    <a href="tel:+919419184550" className="hover:text-white transition-colors">
+                      <strong className="text-white">India:</strong> +91 94191 84550
                     </a>
                   </p>
                   <p>
-                    <a href="tel:+919419184550" className="hover:text-white transition-colors">
-                      <strong className="text-white">India:</strong> +91 94191 84550
+                    <a href="tel:+61431764492" className="hover:text-white transition-colors">
+                      <strong className="text-white">Australia:</strong> +61 431 764 492
                     </a>
                   </p>
                 </div>
@@ -179,10 +174,10 @@ export default function Footer() {
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#C79A63] shrink-0" />
                 <a
-                  href="mailto:puneet.arora2702@gmail.com"
+                  href="mailto:rpss1974@gmail.com"
                   className="hover:text-white transition-colors"
                 >
-                  puneet.arora2702@gmail.com
+                  rpss1974@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2.5">

@@ -12,8 +12,8 @@ export default function Hero() {
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black text-white pt-20">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=2000&q=85"
-          alt="RPSS Global Timber Sourcing"
+          src="/images/ov-roundlogs.jpg"
+          alt="Pine and hardwood round logs"
           fill
           priority
           className="object-cover object-center scale-105 filter brightness-75 contrast-110"

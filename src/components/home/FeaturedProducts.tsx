@@ -24,8 +24,10 @@ export default function FeaturedProducts() {
               PRODUCT FOCUS
             </h2>
             <p className="text-base text-[var(--text-muted)] leading-relaxed">
-              Timber, plywood, agricultural products and buyer-specific sourcing guided by genuine
-              market requirements.
+              Timber &amp; Wood Products — Pine, hardwood, teak and allied timber products. Plywood
+              &amp; Allied Products — Plywood, veneers, laminated boards and MDF. Buyer-Specific
+              Sourcing — Products outside the listed categories can also be explored where there is a
+              genuine requirement.
             </p>
           </div>
 
@@ -37,7 +39,7 @@ export default function FeaturedProducts() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PRODUCTS_DATA.map((product, index) => (
             <motion.div
               key={product.id}

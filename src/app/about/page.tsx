@@ -39,7 +39,7 @@ export default function AboutPage() {
   const sourcing = [
     {
       title: 'Pine',
-      desc: 'Germany, Austria, Russia, New Zealand and Australia.',
+      desc: 'Germany, Australia, Russia, New Zealand and Austria.',
     },
     {
       title: 'Hardwood',
@@ -66,7 +66,7 @@ export default function AboutPage() {
           <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto font-light">
             RPSS was established in 1974 by Mr. Sham Sunder Arora in Jammu as a timber wholesaler and
             commission agent. The business remains family-operated, with established operations in
-            Jammu and Amritsar, four warehouses and a team of approximately 15 people.
+            Jammu &amp; Kashmir, Amritsar and Gandhidham (Gujarat).
           </p>
         </div>
       </section>
@@ -81,9 +81,8 @@ export default function AboutPage() {
               Our Story
             </h2>
             <p className="text-base text-[var(--text-muted)] leading-relaxed">
-              RPSS represents Ram Parkash Sham Sunder. Ram Parkash was the name of Mr. Sham Sunder
-              Arora&apos;s father, who was also involved in the timber trade. The name reflects two
-              generations of the family business.
+              RPSS was established in 1974 by Mr Sunder Arora and the name reflects three generations
+              of the family business with Puneet Arora joining in year 2004.
             </p>
 
             <div className="subtitle-badge">
@@ -108,8 +107,8 @@ export default function AboutPage() {
           <div className="lg:col-span-6 relative">
             <div className="relative h-[450px] rounded-3xl overflow-hidden shadow-2xl border-4 border-[var(--bg-card)]">
               <Image
-                src="https://images.unsplash.com/photo-1520699049698-acd2fccb8cc8?auto=format&fit=crop&w=1200&q=80"
-                alt="RPSS Timber Sourcing"
+                src="/images/ov-kd-pine.jpg"
+                alt="KD pine and sawn timber sourcing"
                 fill
                 className="object-cover"
               />
@@ -150,9 +149,10 @@ export default function AboutPage() {
             </div>
             <h2 className="text-3xl font-serif font-bold text-[var(--text-main)]">Indian Market</h2>
             <p className="text-base text-[var(--text-muted)] leading-relaxed">
-              RPSS primarily serves Punjab and Jammu &amp; Kashmir, with a strong connection to
-              Srinagar. Customers include timber wholesalers and retailers, furniture manufacturers,
-              plywood manufacturers, construction businesses, interior businesses and other traders.
+              RPSS primarily serves Jammu &amp; Kashmir and Punjab with a strong connection to
+              Srinagar and Amritsar. Customers include timber wholesalers and retailers, furniture
+              manufacturers, plywood manufacturers, construction businesses, interior businesses and
+              other traders.
             </p>
           </div>
           <div className="space-y-4">

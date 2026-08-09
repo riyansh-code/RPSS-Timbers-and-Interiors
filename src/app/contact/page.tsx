@@ -104,12 +104,12 @@ export default function ContactPage() {
                 <MapPin className="w-5 h-5 text-[#C79A63] shrink-0 mt-0.5" />
                 <div>
                   <p>
-                    <strong className="text-[var(--text-main)]">Australia:</strong> Canberra, ACT —
-                    Australian sourcing operation — Puneet Arora
-                  </p>
-                  <p className="mt-1">
                     <strong className="text-[var(--text-main)]">India:</strong> Amritsar, Punjab |
                     Jammu &amp; Kashmir — Mr. Sham Sunder Arora
+                  </p>
+                  <p className="mt-1">
+                    <strong className="text-[var(--text-main)]">Australia:</strong> Canberra, ACT —
+                    Australian sourcing operation — Puneet Arora
                   </p>
                 </div>
               </div>
@@ -117,13 +117,13 @@ export default function ContactPage() {
                 <Phone className="w-5 h-5 text-[#C79A63] shrink-0 mt-0.5" />
                 <div>
                   <p>
-                    <a href="tel:+61431764492" className="hover:text-[var(--brand-primary)]">
-                      Australia: +61 431 764 492
+                    <a href="tel:+919419184550" className="hover:text-[var(--brand-primary)]">
+                      India: +91 94191 84550
                     </a>
                   </p>
                   <p>
-                    <a href="tel:+919419184550" className="hover:text-[var(--brand-primary)]">
-                      India: +91 94191 84550
+                    <a href="tel:+61431764492" className="hover:text-[var(--brand-primary)]">
+                      Australia: +61 431 764 492
                     </a>
                   </p>
                 </div>
@@ -131,10 +131,10 @@ export default function ContactPage() {
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#C79A63] shrink-0" />
                 <a
-                  href="mailto:puneet.arora2702@gmail.com"
+                  href="mailto:rpss1974@gmail.com"
                   className="hover:text-[var(--brand-primary)]"
                 >
-                  puneet.arora2702@gmail.com
+                  rpss1974@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-3">

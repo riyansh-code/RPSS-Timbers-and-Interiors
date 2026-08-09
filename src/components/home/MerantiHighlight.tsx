@@ -21,9 +21,9 @@ export default function MerantiHighlight() {
             <h2 className="text-3xl sm:text-5xl font-serif font-bold leading-tight">WHAT WE DO</h2>
 
             <p className="text-base sm:text-xl text-gray-200 font-medium leading-relaxed">
-              RPSS Timbers connects international suppliers with Indian buyers. We source timber,
-              agricultural products and other products according to genuine market requirements,
-              while building long-term supplier and buyer relationships.
+              RPSS Timbers connects international suppliers with Indian buyers. We source timber and
+              allied products according to genuine market requirements, while building long-term
+              supplier and buyer relationships.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -64,8 +64,8 @@ export default function MerantiHighlight() {
           <div className="lg:col-span-5 relative">
             <div className="relative h-[420px] rounded-2xl overflow-hidden border-2 border-[#C79A63]/30 shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80"
-                alt="RPSS Global Timber & Product Sourcing"
+                src="/images/ov-pine-logs.jpg"
+                alt="Pine and hardwood round log timber"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"

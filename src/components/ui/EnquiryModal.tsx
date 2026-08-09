@@ -219,15 +219,15 @@ function BuyerFields() {
           <input name="grade" type="text" className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Thickness</FieldLabel>
+          <FieldLabel>Thickness (In mm)</FieldLabel>
           <input name="thickness" type="text" className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Width</FieldLabel>
+          <FieldLabel>Width (In mm)</FieldLabel>
           <input name="width" type="text" className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Length</FieldLabel>
+          <FieldLabel>Length (In mm)</FieldLabel>
           <input name="length" type="text" className={inputClass} />
         </div>
         <div>
@@ -246,16 +246,12 @@ function BuyerFields() {
           <FieldLabel>Required Delivery Period</FieldLabel>
           <input name="deliveryPeriod" type="text" className={inputClass} />
         </div>
-        <div>
-          <FieldLabel>Target Price</FieldLabel>
-          <input name="targetPrice" type="text" className={inputClass} />
-        </div>
         <div className="sm:col-span-2">
           <FieldLabel>Detailed Requirements / Additional Information</FieldLabel>
           <textarea name="details" rows={3} className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Upload Specification Sheet / Photos</FieldLabel>
+          <FieldLabel>Upload Specification Sheet / Purchase Requirement / Photos</FieldLabel>
           <label className={`${inputClass} flex items-center gap-2 cursor-pointer`}>
             <Upload className="w-4 h-4 text-[#C79A63]" />
             <span className="text-sm text-[var(--text-muted)]">Choose files</span>

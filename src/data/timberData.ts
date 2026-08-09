@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   name: string;
-  category: 'timber' | 'plywood' | 'agricultural' | 'custom';
+  category: 'timber' | 'plywood' | 'custom';
   tagline: string;
   shortDesc: string;
   description: string;
@@ -56,12 +56,12 @@ export const PRODUCTS_DATA: Product[] = [
     shortDesc: 'Pine, hardwood, teak and allied timber products.',
     description:
       'Pine, hardwood, teak and allied timber products. Specs and origins are matched to genuine Indian buyer requirements.',
-    image:
-      'https://images.unsplash.com/photo-1546484475-7f7bd55792da?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/ov-kd-pine.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1546484475-7f7bd55792da?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',
+      '/images/ov-kd-pine.jpg',
+      '/images/pine-logs.jpg',
+      '/images/teak-grain.jpg',
+      '/images/ov-teak-grain.jpg',
     ],
     specifications: {
       density: 'Species dependent',
@@ -69,35 +69,33 @@ export const PRODUCTS_DATA: Product[] = [
       durability: 'Commercial & joinery grades',
       jankaHardness: 'Species dependent',
       grainPattern: 'Natural timber grain',
-      origin: 'Germany, Austria, Russia, New Zealand, Australia, Malaysia, Brazil, Mexico & South America',
+      origin:
+        'Germany, Australia, Russia, New Zealand, Austria, Malaysia, Brazil, Mexico & South America',
     },
     applications: [
       'Wholesale timber distribution',
-      'Furniture manufacturing',
+      'Furniture manufacturing input',
       'Construction & joinery',
       'Plywood manufacturing input',
     ],
     features: [
-      'Pine — rough sawn, KD and other suitable grades',
+      'Pine — Australian Radiata Pine | KD Pine | Sawn Timber | Industrial/Pulp Grade and other suitable grades and specifications',
       'Hardwood — Meranti, Kapur and Sal',
-      'Teak — suitable international origins',
-      'Other timber and allied products on request',
+      'Teak — sourced from suitable international origins',
+      'Other timber and allied products — based on buyer requirements',
     ],
     isFlagship: true,
   },
   {
-    id: 'plywood-wood-products',
-    name: 'Plywood & Wood Products',
+    id: 'plywood-allied-products',
+    name: 'Plywood & Allied Products',
     category: 'plywood',
     tagline: 'Plywood, Veneers, Laminated Boards & MDF',
     shortDesc: 'Plywood, veneers, laminated boards and MDF.',
     description:
       'Plywood, veneers, laminated boards, MDF and other allied wood products sourced according to buyer requirements.',
-    image:
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: '/images/ov-birch-ply.jpg',
+    gallery: ['/images/ov-birch-ply.jpg'],
     specifications: {
       density: 'Grade dependent',
       moistureContent: 'As specified',
@@ -106,33 +104,13 @@ export const PRODUCTS_DATA: Product[] = [
       grainPattern: 'Veneer / panel finish',
       origin: 'International supply markets',
     },
-    applications: ['Furniture manufacturing', 'Interiors', 'Construction joinery', 'Wholesale trade'],
-    features: ['Plywood', 'Veneers', 'Laminated boards', 'MDF', 'Other allied wood products'],
-  },
-  {
-    id: 'agricultural-products',
-    name: 'Agricultural Products',
-    category: 'agricultural',
-    tagline: 'Selected Agricultural & Food-Related Products',
-    shortDesc:
-      'Selected agricultural and food-related products according to buyer requirements.',
-    description:
-      'Selected agricultural and food-related products, including nuts and other products where genuine buyer demand exists.',
-    image:
-      'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80',
+    applications: [
+      'Furniture manufacturing input',
+      'Interiors',
+      'Construction joinery',
+      'Wholesale trade',
     ],
-    specifications: {
-      density: 'Market grade',
-      moistureContent: 'Market compliant',
-      durability: 'Export quality',
-      jankaHardness: 'N/A',
-      grainPattern: 'N/A',
-      origin: 'Australia & international origins',
-    },
-    applications: ['Wholesale import', 'Buyer-specific demand', 'Food-related trade channels'],
-    features: ['Selected agricultural products', 'Nuts and related products', 'Buyer-led sourcing'],
+    features: ['Plywood', 'Veneers', 'Laminated boards', 'MDF', 'Other allied wood products'],
   },
   {
     id: 'buyer-specific-sourcing',
@@ -143,11 +121,8 @@ export const PRODUCTS_DATA: Product[] = [
       'Products outside the listed categories can also be explored where there is a genuine requirement.',
     description:
       'If a buyer has a product requirement that is not listed on the website, RPSS can explore suitable international sources.',
-    image:
-      'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: '/images/ov-pine-logs.jpg',
+    gallery: ['/images/ov-pine-logs.jpg', '/images/wood-planks.jpg'],
     specifications: {
       density: 'Per requirement',
       moistureContent: 'Per requirement',
@@ -156,7 +131,11 @@ export const PRODUCTS_DATA: Product[] = [
       grainPattern: 'As specified',
       origin: 'Suitable international sources',
     },
-    applications: ['Custom commercial imports', 'Unlisted product requirements', 'Specialised trade orders'],
+    applications: [
+      'Custom commercial imports',
+      'Unlisted product requirements',
+      'Specialised trade orders',
+    ],
     features: [
       'Not limited to listed categories',
       'Guided by genuine buyer demand',
