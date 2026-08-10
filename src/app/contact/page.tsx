@@ -76,29 +76,11 @@ export default function ContactPage() {
       </section>
 
       <section className="py-16 bg-[var(--bg-card)] border-y border-[var(--border-color)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <div className="space-y-4">
-            <h2 className="text-3xl font-serif font-bold text-[var(--text-main)]">
-              Information We Need
-            </h2>
-            <div className="space-y-4 text-sm text-[var(--text-muted)] leading-relaxed">
-              <p>
-                <strong className="text-[var(--text-main)]">Buyer form:</strong> Name, company,
-                location, phone, email, product, species/type, grade, dimensions, quantity,
-                destination, delivery period, target price, detailed specifications and supporting
-                documents/photos.
-              </p>
-              <p>
-                <strong className="text-[var(--text-main)]">Supplier form:</strong> Company name,
-                contact person, country, website, email/phone, products supplied, catalogue,
-                photos/videos, certifications and factory/warehouse information. Suppliers can also
-                indicate available or surplus opportunities in a subtle, non-intrusive way.
-              </p>
-            </div>
-          </div>
-
-          <div className="p-8 rounded-3xl bg-[var(--bg-primary)] border border-[var(--border-color)] space-y-6">
-            <h3 className="text-2xl font-serif font-bold text-[var(--text-main)]">Contact</h3>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
+          <div className="w-full max-w-xl p-8 rounded-3xl bg-[var(--bg-primary)] border border-[var(--border-color)] space-y-6">
+            <h3 className="text-2xl font-serif font-bold text-[var(--text-main)] text-center">
+              Contact
+            </h3>
             <div className="space-y-5 text-sm text-[var(--text-muted)]">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#C79A63] shrink-0 mt-0.5" />
@@ -148,7 +130,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="pt-2 flex flex-wrap gap-3">
+            <div className="pt-2 flex flex-wrap justify-center gap-3">
               <button
                 onClick={() => openEnquiry('contact')}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--brand-primary)] hover:bg-[#8B5E3C] text-white font-bold text-sm shadow-md transition-all"
