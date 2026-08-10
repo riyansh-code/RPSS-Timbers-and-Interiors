@@ -28,7 +28,7 @@ export default function CompanyIntro() {
             >
               <Image
                 src="/images/ov-kd-pine.jpg"
-                alt="RPSS Premium Wood Processing Yard"
+                alt="Premium kiln-dried pine timber planks"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
