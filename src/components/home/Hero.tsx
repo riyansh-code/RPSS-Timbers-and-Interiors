@@ -1,13 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronDown, ShieldCheck, Award, Sparkles } from 'lucide-react';
+import { ChevronDown, ShieldCheck, Award, Sparkles } from 'lucide-react';
 import Image from 'next/image';
-import { useEnquiry } from '@/context/EnquiryContext';
 
 export default function Hero() {
-  const { openEnquiry } = useEnquiry();
-
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black text-white pt-20">
       <div className="absolute inset-0 z-0">
@@ -88,28 +85,6 @@ export default function Hero() {
             RPSS Timbers brings established Indian market knowledge together with an expanding
             international sourcing network.
           </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
-        >
-          <button
-            onClick={() => openEnquiry('supplier')}
-            className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-[#8B5E3C] via-[#C79A63] to-[#8B5E3C] text-black font-bold text-base shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group"
-          >
-            SOURCE WITH US
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-
-          <button
-            onClick={() => openEnquiry('contact')}
-            className="w-full sm:w-auto px-8 py-4 rounded-xl glass-effect border border-white/30 text-white hover:bg-white/10 font-bold text-base shadow-lg transition-all duration-300"
-          >
-            ENQUIRE
-          </button>
         </motion.div>
       </div>
 
