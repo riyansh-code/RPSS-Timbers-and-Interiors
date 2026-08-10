@@ -7,7 +7,8 @@ import confetti from 'canvas-confetti';
 import { useEnquiry, type EnquiryType } from '@/context/EnquiryContext';
 import { PRODUCTS_DATA } from '@/data/timberData';
 
-const PRODUCT_OTHER_VALUE = '__other__';
+const BUYER_SPECIFIC_SOURCING =
+  PRODUCTS_DATA.find((p) => p.id === 'buyer-specific-sourcing')?.name ?? 'Buyer-Specific Sourcing';
 
 const inputClass =
   'w-full px-4 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-[#C79A63]';
@@ -426,23 +427,23 @@ function ContactFields() {
 
 function resolveProductSelection(defaultProduct: string) {
   const listed = PRODUCTS_DATA.some((p) => p.name === defaultProduct);
-  if (!defaultProduct) return { selection: '', other: '' };
-  if (listed) return { selection: defaultProduct, other: '' };
-  return { selection: PRODUCT_OTHER_VALUE, other: defaultProduct };
+  if (!defaultProduct) return { selection: '', customDetail: '' };
+  if (listed) return { selection: defaultProduct, customDetail: '' };
+  return { selection: BUYER_SPECIFIC_SOURCING, customDetail: defaultProduct };
 }
 
 function ProductFields({ defaultProduct }: { defaultProduct: string }) {
   const initial = resolveProductSelection(defaultProduct);
   const [productSelection, setProductSelection] = useState(initial.selection);
-  const [otherProduct, setOtherProduct] = useState(initial.other);
+  const [buyerSpecificDetail, setBuyerSpecificDetail] = useState(initial.customDetail);
 
   useEffect(() => {
     const next = resolveProductSelection(defaultProduct);
     setProductSelection(next.selection);
-    setOtherProduct(next.other);
+    setBuyerSpecificDetail(next.customDetail);
   }, [defaultProduct]);
 
-  const isOther = productSelection === PRODUCT_OTHER_VALUE;
+  const isBuyerSpecific = productSelection === BUYER_SPECIFIC_SOURCING;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -472,7 +473,7 @@ function ProductFields({ defaultProduct }: { defaultProduct: string }) {
           required
           value={productSelection}
           onChange={(e) => setProductSelection(e.target.value)}
-          name={!isOther ? 'productOfInterest' : undefined}
+          name="productOfInterest"
           className={inputClass}
         >
           <option value="" disabled>
@@ -483,18 +484,20 @@ function ProductFields({ defaultProduct }: { defaultProduct: string }) {
               {product.name}
             </option>
           ))}
-          <option value={PRODUCT_OTHER_VALUE}>Other</option>
         </select>
-        {isOther && (
-          <input
-            name="productOfInterest"
-            type="text"
-            required
-            value={otherProduct}
-            onChange={(e) => setOtherProduct(e.target.value)}
-            placeholder="Please specify the product you are interested in"
-            className={`${inputClass} mt-2`}
-          />
+        {isBuyerSpecific && (
+          <div className="mt-3 space-y-1">
+            <FieldLabel required>Product requirement</FieldLabel>
+            <input
+              name="buyerSpecificProduct"
+              type="text"
+              required
+              value={buyerSpecificDetail}
+              onChange={(e) => setBuyerSpecificDetail(e.target.value)}
+              placeholder="Describe the product you would like us to source"
+              className={inputClass}
+            />
+          </div>
         )}
       </div>
       <div>
