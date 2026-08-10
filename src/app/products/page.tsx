@@ -85,23 +85,25 @@ export default function ProductsPage() {
                     ))}
                   </ul>
                 </div>
-                <div className="pt-4 border-t border-[var(--border-color)] flex items-center justify-between gap-3">
+                <div className="pt-4 border-t border-[var(--border-color)]">
                   <button
                     onClick={() => setSelectedProduct(product)}
                     className="flex items-center gap-1.5 text-xs font-bold text-[var(--brand-primary)] hover:text-[#C79A63] transition-colors"
                   >
                     <Eye className="w-4 h-4" /> Details
                   </button>
-                  <button
-                    onClick={() => openEnquiry('product', product.name)}
-                    className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--brand-primary)] hover:bg-[#8B5E3C] text-white text-xs font-semibold shadow-md transition-all"
-                  >
-                    <Send className="w-3.5 h-3.5" /> ENQUIRE ABOUT A PRODUCT
-                  </button>
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+        <div className="flex justify-center pt-4">
+          <button
+            onClick={() => openEnquiry('product')}
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[#8B5E3C] text-white font-bold text-sm shadow-md transition-all"
+          >
+            <Send className="w-4 h-4" /> ENQUIRE ABOUT A PRODUCT
+          </button>
         </div>
       </section>
 

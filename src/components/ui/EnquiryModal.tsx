@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle, Send, ShieldCheck, Upload } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useEnquiry, type EnquiryType } from '@/context/EnquiryContext';
+import { PRODUCTS_DATA } from '@/data/timberData';
+
+const PRODUCT_OTHER_VALUE = '__other__';
 
 const inputClass =
   'w-full px-4 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-[#C79A63]';
@@ -421,7 +424,26 @@ function ContactFields() {
   );
 }
 
+function resolveProductSelection(defaultProduct: string) {
+  const listed = PRODUCTS_DATA.some((p) => p.name === defaultProduct);
+  if (!defaultProduct) return { selection: '', other: '' };
+  if (listed) return { selection: defaultProduct, other: '' };
+  return { selection: PRODUCT_OTHER_VALUE, other: defaultProduct };
+}
+
 function ProductFields({ defaultProduct }: { defaultProduct: string }) {
+  const initial = resolveProductSelection(defaultProduct);
+  const [productSelection, setProductSelection] = useState(initial.selection);
+  const [otherProduct, setOtherProduct] = useState(initial.other);
+
+  useEffect(() => {
+    const next = resolveProductSelection(defaultProduct);
+    setProductSelection(next.selection);
+    setOtherProduct(next.other);
+  }, [defaultProduct]);
+
+  const isOther = productSelection === PRODUCT_OTHER_VALUE;
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
@@ -444,15 +466,36 @@ function ProductFields({ defaultProduct }: { defaultProduct: string }) {
         <FieldLabel>Phone / WhatsApp</FieldLabel>
         <input name="phone" type="tel" className={inputClass} />
       </div>
-      <div>
+      <div className="sm:col-span-2">
         <FieldLabel required>Product of Interest</FieldLabel>
-        <input
-          name="productOfInterest"
-          type="text"
+        <select
           required
-          defaultValue={defaultProduct}
+          value={productSelection}
+          onChange={(e) => setProductSelection(e.target.value)}
+          name={!isOther ? 'productOfInterest' : undefined}
           className={inputClass}
-        />
+        >
+          <option value="" disabled>
+            Select a product
+          </option>
+          {PRODUCTS_DATA.map((product) => (
+            <option key={product.id} value={product.name}>
+              {product.name}
+            </option>
+          ))}
+          <option value={PRODUCT_OTHER_VALUE}>Other</option>
+        </select>
+        {isOther && (
+          <input
+            name="productOfInterest"
+            type="text"
+            required
+            value={otherProduct}
+            onChange={(e) => setOtherProduct(e.target.value)}
+            placeholder="Please specify the product you are interested in"
+            className={`${inputClass} mt-2`}
+          />
+        )}
       </div>
       <div>
         <FieldLabel>Species / Type</FieldLabel>
