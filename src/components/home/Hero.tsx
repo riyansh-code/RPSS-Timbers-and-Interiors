@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ChevronDown, ShieldCheck, Award, Sparkles } from 'lucide-react';
+import { ChevronDown, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Hero() {
@@ -19,38 +19,6 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-[#5C3A21]/40 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-black/60" />
       </div>
-
-      <motion.div
-        animate={{ y: [0, -15, 0], rotate: [0, 2, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/4 right-8 lg:right-20 hidden md:block z-10 p-4 rounded-2xl glass-effect border border-white/20 shadow-2xl max-w-xs backdrop-blur-md"
-      >
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-[#C79A63]/20 text-[#C79A63]">
-            <Award className="w-6 h-6" />
-          </div>
-          <div>
-            <p className="text-xs text-white/70 uppercase tracking-widest font-semibold">Established 1974</p>
-            <p className="text-sm font-serif font-bold text-white">50+ Years Timber Trade Legacy</p>
-          </div>
-        </div>
-      </motion.div>
-
-      <motion.div
-        animate={{ y: [0, 18, 0], rotate: [0, -2, 0] }}
-        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="absolute bottom-1/4 left-8 lg:left-20 hidden md:block z-10 p-4 rounded-2xl glass-effect border border-white/20 shadow-2xl max-w-xs backdrop-blur-md"
-      >
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-[#8B5E3C]/20 text-[#E0B480]">
-            <ShieldCheck className="w-6 h-6" />
-          </div>
-          <div>
-            <p className="text-xs text-white/70 uppercase tracking-widest font-semibold">Global Sourcing Network</p>
-            <p className="text-sm font-serif font-bold text-white">Australia &amp; Global Markets</p>
-          </div>
-        </div>
-      </motion.div>
 
       <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 py-16">
         <motion.div
