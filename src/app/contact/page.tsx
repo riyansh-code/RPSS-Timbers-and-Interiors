@@ -119,29 +119,14 @@ export default function ContactPage() {
                   rpss1974@gmail.com
                 </a>
               </div>
-              <div className="flex items-center gap-3">
-                <Globe className="w-5 h-5 text-[#C79A63] shrink-0" />
-                <a
-                  href="https://www.rpsstimbers.com"
-                  className="hover:text-[var(--brand-primary)]"
-                >
-                  www.rpsstimbers.com
-                </a>
-              </div>
             </div>
 
-            <div className="pt-2 flex flex-wrap justify-center gap-3">
+            <div className="pt-2 flex justify-center">
               <button
                 onClick={() => openEnquiry('contact')}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--brand-primary)] hover:bg-[#8B5E3C] text-white font-bold text-sm shadow-md transition-all"
               >
                 CONTACT RPSS
-              </button>
-              <button
-                onClick={() => openEnquiry('contact')}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[var(--border-color)] hover:border-[#C79A63] text-[var(--text-main)] font-bold text-sm transition-all"
-              >
-                TALK TO RPSS
               </button>
             </div>
           </div>

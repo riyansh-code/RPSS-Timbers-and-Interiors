@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
   Award,
-  Building2,
   CheckCircle2,
   Globe,
   Heart,
@@ -74,17 +73,6 @@ export default function AboutPage() {
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 space-y-6">
-            <div className="subtitle-badge">
-              <Building2 className="w-4 h-4 text-[#8B5E3C]" /> Our Story
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[var(--text-main)]">
-              Our Story
-            </h2>
-            <p className="text-base text-[var(--text-muted)] leading-relaxed">
-              RPSS was established in 1974 by Mr Sunder Arora and the name reflects three generations
-              of the family business with Puneet Arora joining in year 2004.
-            </p>
-
             <div className="subtitle-badge">
               <Users className="w-4 h-4 text-[#8B5E3C]" /> Our Experience
             </div>

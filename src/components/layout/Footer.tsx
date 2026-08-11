@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { MapPin, Phone, Mail, ArrowRight, Linkedin, Facebook, Globe } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 import { useEnquiry } from '@/context/EnquiryContext';
 
 export default function Footer() {
@@ -32,34 +32,6 @@ export default function Footer() {
               market knowledge together with an expanding international sourcing network.
             </p>
 
-            <div className="pt-2 flex items-center gap-3 text-xs text-[#C79A63]">
-              <Globe className="w-4 h-4" />
-              <span>www.rpsstimbers.com</span>
-            </div>
-
-            <div className="flex items-center space-x-3 pt-2">
-              <a
-                href="https://www.rpsstimbers.com"
-                aria-label="Website"
-                className="p-2 rounded-lg bg-[#28221D] hover:bg-[#C79A63] hover:text-black transition-colors text-white"
-              >
-                <Globe className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="p-2 rounded-lg bg-[#28221D] hover:bg-[#C79A63] hover:text-black transition-colors text-white"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="p-2 rounded-lg bg-[#28221D] hover:bg-[#C79A63] hover:text-black transition-colors text-white"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
-            </div>
           </div>
 
           <div className="space-y-4">
@@ -178,15 +150,6 @@ export default function Footer() {
                   className="hover:text-white transition-colors"
                 >
                   rpss1974@gmail.com
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Globe className="w-4 h-4 text-[#C79A63] shrink-0" />
-                <a
-                  href="https://www.rpsstimbers.com"
-                  className="hover:text-white transition-colors"
-                >
-                  www.rpsstimbers.com
                 </a>
               </li>
               <li>
