@@ -40,13 +40,20 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 shrink-0 rounded-xl overflow-hidden shadow-md group-hover:scale-105 transition-transform">
+        <Link href="/" className="flex items-center gap-3 sm:gap-4 group">
+          <div
+            className={`relative w-[4.5rem] h-[4.5rem] sm:w-20 sm:h-20 lg:w-24 lg:h-24 shrink-0 rounded-full overflow-hidden ring-2 shadow-lg group-hover:scale-105 transition-transform ${
+              scrolled
+                ? 'bg-white ring-[var(--border-color)]'
+                : 'bg-white ring-white/80'
+            }`}
+          >
             <Image
               src="/images/logo.png"
               alt="RPSS Timbers logo"
               fill
-              className="object-contain"
+              sizes="(max-width: 640px) 72px, (max-width: 1024px) 80px, 96px"
+              className="object-contain p-1"
               priority
             />
           </div>
