@@ -11,61 +11,28 @@ import {
   Users,
 } from 'lucide-react';
 import CTABanner from '@/components/home/CTABanner';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function AboutPage() {
-  const experience = [
-    'Timber purchasing',
-    'International sourcing',
-    'Direct imports',
-    'Wholesale distribution',
-    'Supplier negotiations',
-    'Product selection',
-    'Customer relationships',
-    'Commercial management',
-    'Indian market knowledge',
-  ];
-
-  const whyRpss = [
-    'Trust',
-    'Genuine dealing',
-    'Fairness',
-    'Product knowledge',
-    'Reliable supply',
-    'Quality',
-    'Consistent service',
-  ];
-
-  const sourcing = [
-    {
-      title: 'Pine',
-      desc: 'Germany, Australia, Russia, New Zealand and Austria.',
-    },
-    {
-      title: 'Hardwood',
-      desc: 'Meranti, Kapur and Sal, including sourcing experience from Malaysia.',
-    },
-    {
-      title: 'Teak',
-      desc: 'Brazil, Mexico and South America.',
-    },
-  ];
+  const { t } = useLanguage();
+  const experience = t.about.experienceItems;
+  const whyRpss = t.about.whyItems;
+  const sourcing = t.about.sourcing;
 
   return (
     <div className="pt-24 bg-[var(--bg-primary)]">
       <section className="relative py-20 bg-gradient-to-r from-[#1F1F1F] via-[#5C3A21] to-[#1F1F1F] text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <div className="subtitle-badge border border-[#C79A63]/40 text-[#E6C89C] mx-auto">
-            <Award className="w-4 h-4 text-[#C79A63]" /> About RPSS
+            <Award className="w-4 h-4 text-[#C79A63]" /> {t.about.badge}
           </div>
           <h1 className="text-3xl sm:text-5xl font-serif font-extrabold text-white leading-tight">
-            Five Decades of Timber Trade.
+            {t.about.title}
             <br className="hidden sm:inline" />
-            <span className="gold-gradient-text"> Building the Next Generation of Global Sourcing.</span>
+            <span className="gold-gradient-text">{t.about.titleHighlight}</span>
           </h1>
           <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto font-light">
-            RPSS was established in 1974 by Mr. Sham Sunder Arora in Jammu as a timber wholesaler and
-            commission agent. The business remains family-operated, with established operations in
-            Jammu &amp; Kashmir, Amritsar and Gandhidham (Gujarat).
+            {t.about.intro}
           </p>
         </div>
       </section>
@@ -74,13 +41,13 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 space-y-6">
             <div className="subtitle-badge">
-              <Users className="w-4 h-4 text-[#8B5E3C]" /> Our Experience
+              <Users className="w-4 h-4 text-[#8B5E3C]" /> {t.about.experienceBadge}
             </div>
-            <h3 className="text-2xl font-serif font-bold text-[var(--text-main)]">Our Experience</h3>
+            <h3 className="text-2xl font-serif font-bold text-[var(--text-main)]">
+              {t.about.experienceTitle}
+            </h3>
             <p className="text-base text-[var(--text-muted)] leading-relaxed">
-              RPSS experience includes timber purchasing, international sourcing, direct imports,
-              wholesale distribution, supplier negotiations, product selection, customer
-              relationships, commercial management and Indian market knowledge.
+              {t.about.experienceIntro}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {experience.map((item) => (
@@ -109,10 +76,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <div className="subtitle-badge mx-auto">
-              <Globe className="w-4 h-4 text-[#8B5E3C]" /> International Sourcing
+              <Globe className="w-4 h-4 text-[#8B5E3C]" /> {t.about.sourcingBadge}
             </div>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[var(--text-main)]">
-              International Sourcing
+              {t.about.sourcingTitle}
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -133,27 +100,24 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-4">
             <div className="subtitle-badge">
-              <Target className="w-4 h-4 text-[#8B5E3C]" /> Indian Market
+              <Target className="w-4 h-4 text-[#8B5E3C]" /> {t.about.indianMarketBadge}
             </div>
-            <h2 className="text-3xl font-serif font-bold text-[var(--text-main)]">Indian Market</h2>
+            <h2 className="text-3xl font-serif font-bold text-[var(--text-main)]">
+              {t.about.indianMarketTitle}
+            </h2>
             <p className="text-base text-[var(--text-muted)] leading-relaxed">
-              RPSS primarily serves Jammu &amp; Kashmir and Punjab with a strong connection to
-              Srinagar and Amritsar. Customers include timber wholesalers and retailers, furniture
-              manufacturers, plywood manufacturers, construction businesses, interior businesses and
-              other traders.
+              {t.about.indianMarketBody}
             </p>
           </div>
           <div className="space-y-4">
             <div className="subtitle-badge">
-              <Globe className="w-4 h-4 text-[#8B5E3C]" /> Australian Presence
+              <Globe className="w-4 h-4 text-[#8B5E3C]" /> {t.about.australianBadge}
             </div>
             <h2 className="text-3xl font-serif font-bold text-[var(--text-main)]">
-              Australian Presence
+              {t.about.australianTitle}
             </h2>
             <p className="text-base text-[var(--text-muted)] leading-relaxed">
-              RPSS Timbers — Canberra, Australian sourcing operation. The Australian operation works
-              alongside the established Indian business to develop supplier relationships and
-              international sourcing opportunities.
+              {t.about.australianBody}
             </p>
           </div>
         </div>
@@ -163,10 +127,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <div className="subtitle-badge mx-auto">
-              <Heart className="w-4 h-4 text-[#8B5E3C]" /> Why RPSS
+              <Heart className="w-4 h-4 text-[#8B5E3C]" /> {t.about.whyBadge}
             </div>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[var(--text-main)]">
-              Why RPSS
+              {t.about.whyTitle}
             </h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">

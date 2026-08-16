@@ -5,51 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle, Send, ShieldCheck, Upload } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useEnquiry, type EnquiryType } from '@/context/EnquiryContext';
-import { PRODUCTS_DATA } from '@/data/timberData';
+import { useLanguage } from '@/context/LanguageContext';
+import type { Dictionary } from '@/i18n';
 
-const BUYER_SPECIFIC_SOURCING =
-  PRODUCTS_DATA.find((p) => p.id === 'buyer-specific-sourcing')?.name ?? 'Buyer-Specific Sourcing';
+type EnquiryFields = Dictionary['enquiry']['fields'];
 
 const inputClass =
   'w-full px-4 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-[#C79A63]';
 const labelClass = 'block text-xs font-semibold uppercase text-[var(--text-muted)] mb-1';
-
-const FORM_META: Record<
-  EnquiryType,
-  { heading: string; intro: string; submitLabel: string; success: string }
-> = {
-  buyer: {
-    heading: 'Submit Your Requirement',
-    intro:
-      'Tell us what you are looking for. The more details you provide, the better we can identify suitable international sources.',
-    submitLabel: 'SUBMIT REQUIREMENT',
-    success:
-      'Thank you. Your requirement has been received. Our team will review the details and contact you at the earliest.',
-  },
-  supplier: {
-    heading: 'Become an RPSS Supplier',
-    intro:
-      'Are you an international manufacturer, mill, exporter, wholesaler, stockholder or supplier looking to develop opportunities in India? Tell us about your company and products.',
-    submitLabel: 'SUBMIT SUPPLIER ENQUIRY',
-    success:
-      'Thank you for contacting RPSS. We have received your company and product information and will review the opportunity.',
-  },
-  contact: {
-    heading: 'Contact RPSS',
-    intro: 'Start a conversation with RPSS. Share a few details and we will get back to you.',
-    submitLabel: 'SEND ENQUIRY',
-    success:
-      'Thank you for contacting RPSS. We have received your enquiry and will get back to you at the earliest.',
-  },
-  product: {
-    heading: 'Product Enquiry',
-    intro:
-      'Interested in a particular product but not ready to submit a complete purchase requirement? Tell us what you need.',
-    submitLabel: 'SEND PRODUCT ENQUIRY',
-    success:
-      'Thank you for your enquiry. We have received your product enquiry and will contact you at the earliest.',
-  },
-};
 
 function FieldLabel({ children, required }: { children: React.ReactNode; required?: boolean }) {
   return (
@@ -62,8 +25,11 @@ function FieldLabel({ children, required }: { children: React.ReactNode; require
 
 export default function EnquiryModal() {
   const { isOpen, closeEnquiry, enquiryType, defaultProduct } = useEnquiry();
+  const { t, products } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
-  const meta = FORM_META[enquiryType];
+  const meta = t.enquiry.forms[enquiryType as EnquiryType];
+  const buyerSpecificName =
+    products.find((p) => p.id === 'buyer-specific-sourcing')?.name ?? 'Buyer-Specific Sourcing';
 
   useEffect(() => {
     if (isOpen) setSubmitted(false);
@@ -113,7 +79,7 @@ export default function EnquiryModal() {
               <button
                 onClick={handleClose}
                 className="p-2 text-white/80 hover:text-white rounded-full hover:bg-white/10 transition-colors"
-                aria-label="Close enquiry form"
+                aria-label={t.common.close}
               >
                 <X className="w-6 h-6" />
               </button>
@@ -130,14 +96,14 @@ export default function EnquiryModal() {
                     <CheckCircle className="w-10 h-10" />
                   </div>
                   <h4 className="text-2xl font-serif font-bold text-[var(--text-main)]">
-                    Enquiry Received
+                    {t.enquiry.enquiryReceived}
                   </h4>
                   <p className="text-[var(--text-muted)] max-w-md mx-auto">{meta.success}</p>
                   <button
                     onClick={handleClose}
                     className="mt-4 px-6 py-2.5 bg-[var(--brand-primary)] text-white font-medium rounded-lg hover:bg-[#8B5E3C] transition-colors"
                   >
-                    Close Window
+                    {t.enquiry.closeWindow}
                   </button>
                 </motion.div>
               ) : (
@@ -145,14 +111,21 @@ export default function EnquiryModal() {
                   <input type="hidden" name="enquiryType" value={enquiryType} />
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed">{meta.intro}</p>
 
-                  {enquiryType === 'buyer' && <BuyerFields />}
-                  {enquiryType === 'supplier' && <SupplierFields />}
-                  {enquiryType === 'contact' && <ContactFields />}
-                  {enquiryType === 'product' && <ProductFields defaultProduct={defaultProduct} />}
+                  {enquiryType === 'buyer' && <BuyerFields fields={t.enquiry.fields} />}
+                  {enquiryType === 'supplier' && <SupplierFields fields={t.enquiry.fields} />}
+                  {enquiryType === 'contact' && <ContactFields fields={t.enquiry.fields} />}
+                  {enquiryType === 'product' && (
+                    <ProductFields
+                      fields={t.enquiry.fields}
+                      defaultProduct={defaultProduct}
+                      products={products}
+                      buyerSpecificName={buyerSpecificName}
+                    />
+                  )}
 
                   <div className="flex items-center justify-between pt-2 gap-4 flex-wrap">
                     <span className="flex items-center gap-1.5 text-xs text-[var(--text-muted)]">
-                      <ShieldCheck className="w-4 h-4 text-emerald-600" /> Confidential commercial enquiry
+                      <ShieldCheck className="w-4 h-4 text-emerald-600" /> {t.enquiry.confidential}
                     </span>
                     <button
                       type="submit"
@@ -171,99 +144,99 @@ export default function EnquiryModal() {
   );
 }
 
-function BuyerFields() {
+function BuyerFields({ fields }: { fields: EnquiryFields }) {
   return (
     <>
       <p className="text-xs font-bold uppercase tracking-wider text-[var(--brand-primary)] pt-2">
-        Buyer Information
+        {fields.buyerInformation}
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <FieldLabel required>Full Name</FieldLabel>
+          <FieldLabel required>{fields.fullName}</FieldLabel>
           <input name="fullName" type="text" required className={inputClass} />
         </div>
         <div>
-          <FieldLabel required>Company Name</FieldLabel>
+          <FieldLabel required>{fields.companyName}</FieldLabel>
           <input name="companyName" type="text" required className={inputClass} />
         </div>
         <div>
-          <FieldLabel required>City / State</FieldLabel>
+          <FieldLabel required>{fields.cityState}</FieldLabel>
           <input name="cityState" type="text" required className={inputClass} />
         </div>
         <div>
-          <FieldLabel required>Phone / WhatsApp</FieldLabel>
+          <FieldLabel required>{fields.phone}</FieldLabel>
           <input name="phone" type="tel" required className={inputClass} />
         </div>
         <div className="sm:col-span-2">
-          <FieldLabel required>Email</FieldLabel>
+          <FieldLabel required>{fields.email}</FieldLabel>
           <input name="email" type="email" required className={inputClass} />
         </div>
       </div>
 
       <p className="text-xs font-bold uppercase tracking-wider text-[var(--brand-primary)] pt-2">
-        Product Requirement
+        {fields.productRequirement}
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="sm:col-span-2">
-          <FieldLabel required>Product Required</FieldLabel>
+          <FieldLabel required>{fields.productRequired}</FieldLabel>
           <input
             name="productRequired"
             type="text"
             required
-            placeholder="Including products not listed on the website"
+            placeholder={fields.productRequiredPlaceholder}
             className={inputClass}
           />
         </div>
         <div>
-          <FieldLabel>Species / Product Type</FieldLabel>
+          <FieldLabel>{fields.species}</FieldLabel>
           <input name="species" type="text" className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Grade / Quality</FieldLabel>
+          <FieldLabel>{fields.grade}</FieldLabel>
           <input name="grade" type="text" className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Thickness (In mm)</FieldLabel>
+          <FieldLabel>{fields.thickness}</FieldLabel>
           <input name="thickness" type="text" className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Width (In mm)</FieldLabel>
+          <FieldLabel>{fields.width}</FieldLabel>
           <input name="width" type="text" className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Length (In mm)</FieldLabel>
+          <FieldLabel>{fields.length}</FieldLabel>
           <input name="length" type="text" className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Moisture Content / Other Technical Specification</FieldLabel>
+          <FieldLabel>{fields.moisture}</FieldLabel>
           <input name="moisture" type="text" className={inputClass} />
         </div>
         <div>
-          <FieldLabel required>Quantity Required</FieldLabel>
+          <FieldLabel required>{fields.quantity}</FieldLabel>
           <input name="quantity" type="text" required className={inputClass} />
         </div>
         <div>
-          <FieldLabel required>Destination</FieldLabel>
+          <FieldLabel required>{fields.destination}</FieldLabel>
           <input name="destination" type="text" required className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Required Delivery Period</FieldLabel>
+          <FieldLabel>{fields.deliveryPeriod}</FieldLabel>
           <input name="deliveryPeriod" type="text" className={inputClass} />
         </div>
         <div className="sm:col-span-2">
-          <FieldLabel>Detailed Requirements / Additional Information</FieldLabel>
+          <FieldLabel>{fields.details}</FieldLabel>
           <textarea name="details" rows={3} className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Upload Specification Sheet / Purchase Requirement / Photos</FieldLabel>
+          <FieldLabel>{fields.uploadBuyer}</FieldLabel>
           <label className={`${inputClass} flex items-center gap-2 cursor-pointer`}>
             <Upload className="w-4 h-4 text-[#C79A63]" />
-            <span className="text-sm text-[var(--text-muted)]">Choose files</span>
+            <span className="text-sm text-[var(--text-muted)]">{fields.chooseFiles}</span>
             <input name="buyerFiles" type="file" multiple className="hidden" />
           </label>
         </div>
         <div>
-          <FieldLabel>How did you hear about RPSS?</FieldLabel>
+          <FieldLabel>{fields.referral}</FieldLabel>
           <input name="referral" type="text" className={inputClass} />
         </div>
       </div>
@@ -271,109 +244,107 @@ function BuyerFields() {
   );
 }
 
-function SupplierFields() {
+function SupplierFields({ fields }: { fields: EnquiryFields }) {
   return (
     <>
       <p className="text-xs font-bold uppercase tracking-wider text-[var(--brand-primary)] pt-2">
-        Company Information
+        {fields.companyInformation}
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <FieldLabel required>Company Name</FieldLabel>
+          <FieldLabel required>{fields.companyName}</FieldLabel>
           <input name="companyName" type="text" required className={inputClass} />
         </div>
         <div>
-          <FieldLabel required>Contact Person</FieldLabel>
+          <FieldLabel required>{fields.contactPerson}</FieldLabel>
           <input name="contactPerson" type="text" required className={inputClass} />
         </div>
         <div>
-          <FieldLabel required>Country</FieldLabel>
+          <FieldLabel required>{fields.country}</FieldLabel>
           <input name="country" type="text" required className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Website</FieldLabel>
+          <FieldLabel>{fields.website}</FieldLabel>
           <input name="website" type="url" placeholder="https://" className={inputClass} />
         </div>
         <div>
-          <FieldLabel required>Email</FieldLabel>
+          <FieldLabel required>{fields.email}</FieldLabel>
           <input name="email" type="email" required className={inputClass} />
         </div>
         <div>
-          <FieldLabel required>Phone / WhatsApp</FieldLabel>
+          <FieldLabel required>{fields.phone}</FieldLabel>
           <input name="phone" type="tel" required className={inputClass} />
         </div>
         <div className="sm:col-span-2">
-          <FieldLabel>Company Profile / About Your Business</FieldLabel>
+          <FieldLabel>{fields.companyProfile}</FieldLabel>
           <textarea name="companyProfile" rows={3} className={inputClass} />
         </div>
       </div>
 
       <p className="text-xs font-bold uppercase tracking-wider text-[var(--brand-primary)] pt-2">
-        Product Information
+        {fields.productInformation}
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="sm:col-span-2">
-          <FieldLabel required>Products Supplied</FieldLabel>
+          <FieldLabel required>{fields.productsSupplied}</FieldLabel>
           <textarea name="productsSupplied" rows={2} required className={inputClass} />
         </div>
         <div>
-          <FieldLabel>Product Catalogue — Upload</FieldLabel>
+          <FieldLabel>{fields.catalogue}</FieldLabel>
           <label className={`${inputClass} flex items-center gap-2 cursor-pointer`}>
             <Upload className="w-4 h-4 text-[#C79A63]" />
-            <span className="text-sm text-[var(--text-muted)]">Upload catalogue</span>
+            <span className="text-sm text-[var(--text-muted)]">{fields.uploadCatalogue}</span>
             <input name="catalogue" type="file" className="hidden" />
           </label>
         </div>
         <div>
-          <FieldLabel>Product Photos / Videos — Upload</FieldLabel>
+          <FieldLabel>{fields.media}</FieldLabel>
           <label className={`${inputClass} flex items-center gap-2 cursor-pointer`}>
             <Upload className="w-4 h-4 text-[#C79A63]" />
-            <span className="text-sm text-[var(--text-muted)]">Upload media</span>
+            <span className="text-sm text-[var(--text-muted)]">{fields.uploadMedia}</span>
             <input name="media" type="file" multiple accept="image/*,video/*" className="hidden" />
           </label>
         </div>
         <div>
-          <FieldLabel>Certifications — Upload</FieldLabel>
+          <FieldLabel>{fields.certifications}</FieldLabel>
           <label className={`${inputClass} flex items-center gap-2 cursor-pointer`}>
             <Upload className="w-4 h-4 text-[#C79A63]" />
-            <span className="text-sm text-[var(--text-muted)]">Where applicable</span>
+            <span className="text-sm text-[var(--text-muted)]">{fields.whereApplicable}</span>
             <input name="certifications" type="file" multiple className="hidden" />
           </label>
         </div>
         <div>
-          <FieldLabel>Years in Business</FieldLabel>
+          <FieldLabel>{fields.yearsInBusiness}</FieldLabel>
           <input name="yearsInBusiness" type="text" className={inputClass} />
         </div>
         <div className="sm:col-span-2">
-          <FieldLabel>Factory / Mill / Warehouse Information</FieldLabel>
+          <FieldLabel>{fields.factoryInfo}</FieldLabel>
           <textarea name="factoryInfo" rows={2} className={inputClass} />
         </div>
         <div className="sm:col-span-2">
-          <FieldLabel>Main Export Markets</FieldLabel>
+          <FieldLabel>{fields.exportMarkets}</FieldLabel>
           <input name="exportMarkets" type="text" className={inputClass} />
         </div>
       </div>
 
       <p className="text-xs font-bold uppercase tracking-wider text-[var(--brand-primary)] pt-2">
-        Stock &amp; Opportunity
+        {fields.stockOpportunity}
       </p>
       <div className="space-y-4">
         <div>
-          <FieldLabel>
-            Do you currently have available stock or commercially interesting inventory?
-          </FieldLabel>
+          <FieldLabel>{fields.stockQuestion}</FieldLabel>
           <select name="stockAvailability" className={inputClass} defaultValue="">
             <option value="" disabled>
-              Select an option
+              {fields.selectOption}
             </option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-            <option value="from-time-to-time">Available from time to time</option>
-            <option value="discuss">Please contact us to discuss</option>
+            <option value="yes">{fields.yes}</option>
+            <option value="no">{fields.no}</option>
+            <option value="from-time-to-time">{fields.fromTimeToTime}</option>
+            <option value="discuss">{fields.discuss}</option>
           </select>
         </div>
         <div>
-          <FieldLabel>Additional Information / Opportunity Details</FieldLabel>
+          <FieldLabel>{fields.additionalInfo}</FieldLabel>
           <textarea name="additionalInfo" rows={3} className={inputClass} />
         </div>
       </div>
@@ -381,94 +352,110 @@ function SupplierFields() {
   );
 }
 
-function ContactFields() {
+function ContactFields({ fields }: { fields: EnquiryFields }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
-        <FieldLabel required>Name</FieldLabel>
+        <FieldLabel required>{fields.name}</FieldLabel>
         <input name="name" type="text" required className={inputClass} />
       </div>
       <div>
-        <FieldLabel>Company Name</FieldLabel>
+        <FieldLabel>{fields.companyName}</FieldLabel>
         <input name="companyName" type="text" className={inputClass} />
       </div>
       <div>
-        <FieldLabel required>Country</FieldLabel>
+        <FieldLabel required>{fields.country}</FieldLabel>
         <input name="country" type="text" required className={inputClass} />
       </div>
       <div>
-        <FieldLabel required>Email</FieldLabel>
+        <FieldLabel required>{fields.email}</FieldLabel>
         <input name="email" type="email" required className={inputClass} />
       </div>
       <div>
-        <FieldLabel>Phone / WhatsApp</FieldLabel>
+        <FieldLabel>{fields.phone}</FieldLabel>
         <input name="phone" type="tel" className={inputClass} />
       </div>
       <div>
-        <FieldLabel required>I am contacting RPSS as</FieldLabel>
+        <FieldLabel required>{fields.contactAs}</FieldLabel>
         <select name="contactAs" required className={inputClass} defaultValue="">
           <option value="" disabled>
-            Select
+            {fields.select}
           </option>
-          <option value="indian-buyer">Indian Buyer</option>
-          <option value="international-supplier">International Supplier</option>
-          <option value="business-partner">Potential Business Partner</option>
-          <option value="general">General Enquiry</option>
-          <option value="other">Other</option>
+          <option value="indian-buyer">{fields.indianBuyer}</option>
+          <option value="international-supplier">{fields.internationalSupplier}</option>
+          <option value="business-partner">{fields.businessPartner}</option>
+          <option value="general">{fields.general}</option>
+          <option value="other">{fields.other}</option>
         </select>
       </div>
       <div className="sm:col-span-2">
-        <FieldLabel required>Message</FieldLabel>
+        <FieldLabel required>{fields.message}</FieldLabel>
         <textarea name="message" rows={4} required className={inputClass} />
       </div>
     </div>
   );
 }
 
-function resolveProductSelection(defaultProduct: string) {
-  const listed = PRODUCTS_DATA.some((p) => p.name === defaultProduct);
+function resolveProductSelection(
+  defaultProduct: string,
+  productNames: string[],
+  buyerSpecificName: string
+) {
+  const listed = productNames.includes(defaultProduct);
   if (!defaultProduct) return { selection: '', customDetail: '' };
   if (listed) return { selection: defaultProduct, customDetail: '' };
-  return { selection: BUYER_SPECIFIC_SOURCING, customDetail: defaultProduct };
+  return { selection: buyerSpecificName, customDetail: defaultProduct };
 }
 
-function ProductFields({ defaultProduct }: { defaultProduct: string }) {
-  const initial = resolveProductSelection(defaultProduct);
+function ProductFields({
+  fields,
+  defaultProduct,
+  products,
+  buyerSpecificName,
+}: {
+  fields: EnquiryFields;
+  defaultProduct: string;
+  products: { id: string; name: string }[];
+  buyerSpecificName: string;
+}) {
+  const productNames = products.map((p) => p.name);
+  const initial = resolveProductSelection(defaultProduct, productNames, buyerSpecificName);
   const [productSelection, setProductSelection] = useState(initial.selection);
   const [buyerSpecificDetail, setBuyerSpecificDetail] = useState(initial.customDetail);
 
   useEffect(() => {
-    const next = resolveProductSelection(defaultProduct);
+    const names = products.map((p) => p.name);
+    const next = resolveProductSelection(defaultProduct, names, buyerSpecificName);
     setProductSelection(next.selection);
     setBuyerSpecificDetail(next.customDetail);
-  }, [defaultProduct]);
+  }, [defaultProduct, buyerSpecificName, products]);
 
-  const isBuyerSpecific = productSelection === BUYER_SPECIFIC_SOURCING;
+  const isBuyerSpecific = productSelection === buyerSpecificName;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
-        <FieldLabel required>Name</FieldLabel>
+        <FieldLabel required>{fields.name}</FieldLabel>
         <input name="name" type="text" required className={inputClass} />
       </div>
       <div>
-        <FieldLabel>Company Name</FieldLabel>
+        <FieldLabel>{fields.companyName}</FieldLabel>
         <input name="companyName" type="text" className={inputClass} />
       </div>
       <div>
-        <FieldLabel required>Country / City</FieldLabel>
+        <FieldLabel required>{fields.countryCity}</FieldLabel>
         <input name="countryCity" type="text" required className={inputClass} />
       </div>
       <div>
-        <FieldLabel required>Email</FieldLabel>
+        <FieldLabel required>{fields.email}</FieldLabel>
         <input name="email" type="email" required className={inputClass} />
       </div>
       <div>
-        <FieldLabel>Phone / WhatsApp</FieldLabel>
+        <FieldLabel>{fields.phone}</FieldLabel>
         <input name="phone" type="tel" className={inputClass} />
       </div>
       <div className="sm:col-span-2">
-        <FieldLabel required>Product of Interest</FieldLabel>
+        <FieldLabel required>{fields.productOfInterest}</FieldLabel>
         <select
           required
           value={productSelection}
@@ -477,9 +464,9 @@ function ProductFields({ defaultProduct }: { defaultProduct: string }) {
           className={inputClass}
         >
           <option value="" disabled>
-            Select a product
+            {fields.selectProduct}
           </option>
-          {PRODUCTS_DATA.map((product) => (
+          {products.map((product) => (
             <option key={product.id} value={product.name}>
               {product.name}
             </option>
@@ -487,44 +474,44 @@ function ProductFields({ defaultProduct }: { defaultProduct: string }) {
         </select>
         {isBuyerSpecific && (
           <div className="mt-3 space-y-1">
-            <FieldLabel required>Product requirement</FieldLabel>
+            <FieldLabel required>{fields.productRequirementDetail}</FieldLabel>
             <input
               name="buyerSpecificProduct"
               type="text"
               required
               value={buyerSpecificDetail}
               onChange={(e) => setBuyerSpecificDetail(e.target.value)}
-              placeholder="Describe the product you would like us to source"
+              placeholder={fields.productRequirementDetailPlaceholder}
               className={inputClass}
             />
           </div>
         )}
       </div>
       <div>
-        <FieldLabel>Species / Type</FieldLabel>
+        <FieldLabel>{fields.speciesType}</FieldLabel>
         <input name="species" type="text" className={inputClass} />
       </div>
       <div>
-        <FieldLabel>Quantity Required</FieldLabel>
+        <FieldLabel>{fields.quantity}</FieldLabel>
         <input name="quantity" type="text" className={inputClass} />
       </div>
       <div>
-        <FieldLabel>Specification / Size / Grade</FieldLabel>
+        <FieldLabel>{fields.specification}</FieldLabel>
         <input name="specification" type="text" className={inputClass} />
       </div>
       <div>
-        <FieldLabel>Destination</FieldLabel>
+        <FieldLabel>{fields.destination}</FieldLabel>
         <input name="destination" type="text" className={inputClass} />
       </div>
       <div className="sm:col-span-2">
-        <FieldLabel>Additional Requirements / Questions</FieldLabel>
+        <FieldLabel>{fields.additionalQuestions}</FieldLabel>
         <textarea name="additional" rows={3} className={inputClass} />
       </div>
       <div className="sm:col-span-2">
-        <FieldLabel>Upload Photo / Specification</FieldLabel>
+        <FieldLabel>{fields.uploadPhoto}</FieldLabel>
         <label className={`${inputClass} flex items-center gap-2 cursor-pointer`}>
           <Upload className="w-4 h-4 text-[#C79A63]" />
-          <span className="text-sm text-[var(--text-muted)]">If applicable</span>
+          <span className="text-sm text-[var(--text-muted)]">{fields.ifApplicable}</span>
           <input name="productFiles" type="file" multiple className="hidden" />
         </label>
       </div>

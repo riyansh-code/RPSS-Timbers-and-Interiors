@@ -4,13 +4,15 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowRight, Sparkles, Eye, Send } from 'lucide-react';
-import { PRODUCTS_DATA, Product } from '@/data/timberData';
+import type { Product } from '@/data/timberData';
 import ProductDetailModal from '../ui/ProductDetailModal';
 import { useEnquiry } from '@/context/EnquiryContext';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function FeaturedProducts() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const { openEnquiry } = useEnquiry();
+  const { t, products } = useLanguage();
 
   return (
     <section className="py-24 bg-[var(--bg-card)] border-b border-[var(--border-color)] relative">
@@ -18,16 +20,13 @@ export default function FeaturedProducts() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--border-color)] pb-8">
           <div className="space-y-3 max-w-2xl">
             <div className="subtitle-badge">
-              <Sparkles className="w-4 h-4 text-[#8B5E3C]" /> Product Focus
+              <Sparkles className="w-4 h-4 text-[#8B5E3C]" /> {t.productFocus.badge}
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--text-main)]">
-              PRODUCT FOCUS
+              {t.productFocus.title}
             </h2>
             <p className="text-base text-[var(--text-muted)] leading-relaxed">
-              Timber &amp; Wood Products — Pine, hardwood, teak and allied timber products. Plywood
-              &amp; Allied Products — Plywood, veneers, laminated boards and MDF. Buyer-Specific
-              Sourcing — Products outside the listed categories can also be explored where there is a
-              genuine requirement.
+              {t.productFocus.intro}
             </p>
           </div>
 
@@ -35,12 +34,12 @@ export default function FeaturedProducts() {
             onClick={() => openEnquiry('product')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[var(--border-color)] bg-[var(--bg-primary)] hover:border-[#C79A63] text-[var(--text-main)] font-semibold text-sm transition-all"
           >
-            ENQUIRE ABOUT A PRODUCT <ArrowRight className="w-4 h-4 text-[#C79A63]" />
+            {t.common.enquireAboutProduct} <ArrowRight className="w-4 h-4 text-[#C79A63]" />
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PRODUCTS_DATA.map((product, index) => (
+          {products.map((product, index) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 30 }}
@@ -73,13 +72,13 @@ export default function FeaturedProducts() {
                     onClick={() => setSelectedProduct(product)}
                     className="flex items-center gap-1 text-xs font-bold text-[var(--brand-primary)] hover:text-[#C79A63] transition-colors"
                   >
-                    <Eye className="w-3.5 h-3.5" /> Details
+                    <Eye className="w-3.5 h-3.5" /> {t.common.details}
                   </button>
                   <button
                     onClick={() => openEnquiry('product', product.name)}
                     className="flex items-center gap-1 px-3 py-2 rounded-lg bg-[var(--brand-primary)] hover:bg-[#8B5E3C] text-white text-xs font-semibold shadow-md transition-all"
                   >
-                    <Send className="w-3.5 h-3.5" /> ENQUIRE
+                    <Send className="w-3.5 h-3.5" /> {t.common.enquire}
                   </button>
                 </div>
               </div>

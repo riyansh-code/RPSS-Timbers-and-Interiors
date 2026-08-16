@@ -2,24 +2,24 @@
 
 import { ArrowRight, Globe, Mail, MapPin, Phone, Users } from 'lucide-react';
 import { useEnquiry } from '@/context/EnquiryContext';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function ContactPage() {
   const { openEnquiry } = useEnquiry();
+  const { t } = useLanguage();
 
   return (
     <div className="pt-24 bg-[var(--bg-primary)] min-h-screen">
       <section className="py-20 bg-gradient-to-r from-[#1F1F1F] via-[#5C3A21] to-[#1F1F1F] text-white text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <div className="subtitle-badge border border-[#C79A63]/40 text-[#E6C89C] mx-auto">
-            <Phone className="w-4 h-4 text-[#C79A63]" /> Work With RPSS
+            <Phone className="w-4 h-4 text-[#C79A63]" /> {t.contact.badge}
           </div>
           <h1 className="text-3xl sm:text-5xl font-serif font-extrabold text-white leading-tight">
-            Let&apos;s Build the Right Connection
+            {t.contact.title}
           </h1>
           <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto font-light">
-            For more than five decades, RPSS has built its business around timber, long-term
-            relationships and a deep understanding of the Indian market. Today, that experience is
-            being extended into a broader international sourcing and trading network.
+            {t.contact.intro}
           </p>
         </div>
       </section>
@@ -31,24 +31,21 @@ export default function ContactPage() {
               <div className="flex items-center gap-3">
                 <Globe className="w-6 h-6 text-[#C79A63]" />
                 <h2 className="text-2xl font-serif font-bold text-[var(--text-main)]">
-                  For International Suppliers
+                  {t.contact.suppliersTitle}
                 </h2>
               </div>
               <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                Looking to enter or expand in the Indian market? RPSS can be a reliable channel
-                partner for suitable international suppliers.
+                {t.contact.suppliersBody1}
               </p>
               <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                We are interested in suppliers looking to enter India, develop long-term distribution
-                relationships, find Indian demand, offer regular products, explore stock opportunities
-                or discuss representation where appropriate.
+                {t.contact.suppliersBody2}
               </p>
             </div>
             <button
               onClick={() => openEnquiry('supplier')}
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#C79A63] hover:bg-[#E6C89C] text-black font-bold text-sm shadow-md transition-all"
             >
-              BECOME A SUPPLIER <ArrowRight className="w-4 h-4" />
+              {t.contact.becomeSupplier} <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
@@ -57,19 +54,18 @@ export default function ContactPage() {
               <div className="flex items-center gap-3">
                 <Users className="w-6 h-6 text-[#C79A63]" />
                 <h2 className="text-2xl font-serif font-bold text-[var(--text-main)]">
-                  For Indian Buyers
+                  {t.contact.buyersTitle}
                 </h2>
               </div>
               <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                Looking for reliable international supply? Tell RPSS what you need and we can explore
-                suitable sources from Australia and other international markets.
+                {t.contact.buyersBody}
               </p>
             </div>
             <button
               onClick={() => openEnquiry('buyer')}
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[#8B5E3C] text-white font-bold text-sm shadow-md transition-all"
             >
-              FOR BUYERS <ArrowRight className="w-4 h-4" />
+              {t.common.forBuyers} <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -79,19 +75,19 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
           <div className="w-full max-w-xl p-8 rounded-3xl bg-[var(--bg-primary)] border border-[var(--border-color)] space-y-6">
             <h3 className="text-2xl font-serif font-bold text-[var(--text-main)] text-center">
-              Contact
+              {t.contact.contactHeading}
             </h3>
             <div className="space-y-5 text-sm text-[var(--text-muted)]">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#C79A63] shrink-0 mt-0.5" />
                 <div>
                   <p>
-                    <strong className="text-[var(--text-main)]">India:</strong> Amritsar, Punjab |
-                    Jammu &amp; Kashmir — Mr. Sham Sunder Arora
+                    <strong className="text-[var(--text-main)]">{t.common.india}:</strong>{' '}
+                    {t.contact.indiaContact}
                   </p>
                   <p className="mt-1">
-                    <strong className="text-[var(--text-main)]">Australia:</strong> Canberra, ACT —
-                    Australian sourcing operation — Puneet Arora
+                    <strong className="text-[var(--text-main)]">{t.common.australia}:</strong>{' '}
+                    {t.contact.australiaContact}
                   </p>
                 </div>
               </div>
@@ -100,12 +96,12 @@ export default function ContactPage() {
                 <div>
                   <p>
                     <a href="tel:+919419184550" className="hover:text-[var(--brand-primary)]">
-                      India: +91 94191 84550
+                      {t.common.india}: +91 94191 84550
                     </a>
                   </p>
                   <p>
                     <a href="tel:+61431764492" className="hover:text-[var(--brand-primary)]">
-                      Australia: +61 431 764 492
+                      {t.common.australia}: +61 431 764 492
                     </a>
                   </p>
                 </div>
@@ -126,7 +122,7 @@ export default function ContactPage() {
                 onClick={() => openEnquiry('contact')}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--brand-primary)] hover:bg-[#8B5E3C] text-white font-bold text-sm shadow-md transition-all"
               >
-                CONTACT RPSS
+                {t.common.contactRpss}
               </button>
             </div>
           </div>
@@ -135,13 +131,9 @@ export default function ContactPage() {
 
       <section className="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
         <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[var(--text-main)]">
-          Five Decades of Experience. A Global Sourcing Future.
+          {t.contact.closingTitle}
         </h2>
-        <p className="text-base text-[var(--text-muted)] leading-relaxed">
-          For Indian buyers, RPSS aims to provide broader access to reliable international sources.
-          For international suppliers, RPSS aims to provide a knowledgeable channel into the Indian
-          market.
-        </p>
+        <p className="text-base text-[var(--text-muted)] leading-relaxed">{t.contact.closingBody}</p>
       </section>
     </div>
   );

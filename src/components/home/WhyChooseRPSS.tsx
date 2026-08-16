@@ -2,58 +2,33 @@
 
 import { motion } from 'framer-motion';
 import { Globe, Users, Award, Building2, HeartHandshake } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+
+const ICONS = [Award, Building2, Globe, Users, HeartHandshake];
 
 export default function WhyChooseRPSS() {
-  const features = [
-    {
-      icon: Award,
-      title: '50+ YEARS OF MARKET EXPERIENCE',
-      desc: 'Decades of timber trade experience informing every sourcing decision.',
-    },
-    {
-      icon: Building2,
-      title: 'ESTABLISHED INDIAN MARKET PRESENCE',
-      desc: 'Established operations serving buyers across key North Indian markets.',
-    },
-    {
-      icon: Globe,
-      title: 'INTERNATIONAL SOURCING EXPERIENCE',
-      desc: 'Proven experience sourcing across multiple international origins.',
-    },
-    {
-      icon: Users,
-      title: 'DIRECT-SOURCE VISION',
-      desc: 'Building direct relationships that bring buyers closer to origin supply.',
-    },
-    {
-      icon: HeartHandshake,
-      title: 'LONG-TERM RELATIONSHIPS',
-      desc: 'Focused on sustainable supplier and buyer partnerships over one-off deals.',
-    },
-  ];
+  const { t } = useLanguage();
+  const features = t.whyRpss.items;
 
   return (
     <section className="py-24 bg-[var(--bg-primary)] border-b border-[var(--border-color)] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="subtitle-badge">
-            <Award className="w-4 h-4 text-[#8B5E3C]" /> Why RPSS
+            <Award className="w-4 h-4 text-[#8B5E3C]" /> {t.whyRpss.badge}
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--text-main)]">
-            WHY RPSS
+            {t.whyRpss.title}
           </h2>
-          <p className="text-base text-[var(--text-muted)] leading-relaxed">
-            50+ years of market experience | Established Indian market presence | International
-            sourcing experience | Direct-source vision | Long-term relationships
-          </p>
+          <p className="text-base text-[var(--text-muted)] leading-relaxed">{t.whyRpss.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((item, idx) => {
-            const IconComp = item.icon;
+            const IconComp = ICONS[idx] ?? Award;
             return (
               <motion.div
-                key={idx}
+                key={item.title}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

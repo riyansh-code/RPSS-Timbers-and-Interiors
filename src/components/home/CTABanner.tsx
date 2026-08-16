@@ -2,9 +2,11 @@
 
 import { ArrowRight, Globe, Users } from 'lucide-react';
 import { useEnquiry } from '@/context/EnquiryContext';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function CTABanner() {
   const { openEnquiry } = useEnquiry();
+  const { t } = useLanguage();
 
   return (
     <section className="relative py-20 bg-gradient-to-r from-[#1F1F1F] via-[#5C3A21] to-[#1F1F1F] text-white overflow-hidden">
@@ -13,10 +15,10 @@ export default function CTABanner() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <span className="text-xs uppercase tracking-widest text-[#E6C89C] font-bold">
-            Work With RPSS
+            {t.cta.badge}
           </span>
           <h2 className="text-3xl sm:text-5xl font-serif font-extrabold text-white leading-tight">
-            Let&apos;s Build the Right Connection
+            {t.cta.title}
           </h2>
         </div>
 
@@ -25,19 +27,17 @@ export default function CTABanner() {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <Globe className="w-6 h-6 text-[#C79A63]" />
-                <h3 className="text-2xl font-serif font-bold text-white">For Suppliers</h3>
+                <h3 className="text-2xl font-serif font-bold text-white">{t.cta.suppliersTitle}</h3>
               </div>
-              <p className="text-base text-gray-200 leading-relaxed">
-                Looking to enter or expand in the Indian market? RPSS can be a reliable channel
-                partner for suitable international suppliers.
-              </p>
+              <p className="text-base text-gray-200 leading-relaxed">{t.cta.suppliersBody}</p>
             </div>
             <div className="pt-4 border-t border-white/10">
               <button
                 onClick={() => openEnquiry('supplier')}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#C79A63] to-[#8B5E3C] hover:from-[#E6C89C] hover:to-[#C79A63] text-black font-bold text-sm shadow-xl transition-all group"
               >
-                FOR SUPPLIERS <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                {t.common.forSuppliers}{' '}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
@@ -46,19 +46,16 @@ export default function CTABanner() {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <Users className="w-6 h-6 text-[#C79A63]" />
-                <h3 className="text-2xl font-serif font-bold text-white">For Buyers</h3>
+                <h3 className="text-2xl font-serif font-bold text-white">{t.cta.buyersTitle}</h3>
               </div>
-              <p className="text-base text-gray-200 leading-relaxed">
-                Looking for reliable international supply? Tell RPSS what you need and we can
-                explore suitable sources from Australia and other international markets.
-              </p>
+              <p className="text-base text-gray-200 leading-relaxed">{t.cta.buyersBody}</p>
             </div>
             <div className="pt-4 border-t border-white/10">
               <button
                 onClick={() => openEnquiry('buyer')}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/30 hover:bg-white/10 text-white font-bold text-sm shadow-lg transition-all"
               >
-                FOR BUYERS
+                {t.common.forBuyers}
               </button>
             </div>
           </div>

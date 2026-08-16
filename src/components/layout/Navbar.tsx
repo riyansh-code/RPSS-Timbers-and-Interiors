@@ -7,13 +7,16 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight } from 'lucide-react';
 import DarkModeToggle from '../ui/DarkModeToggle';
+import LanguageSelector from '../ui/LanguageSelector';
 import { useEnquiry } from '@/context/EnquiryContext';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const { openEnquiry } = useEnquiry();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +27,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'About RPSS', href: '/about' },
-    { name: 'Products & Sourcing', href: '/products' },
-    { name: 'How We Work', href: '/how-we-work' },
-    { name: 'Work With RPSS', href: '/contact' },
+    { name: t.nav.home, href: '/' },
+    { name: t.nav.about, href: '/about' },
+    { name: t.nav.products, href: '/products' },
+    { name: t.nav.howWeWork, href: '/how-we-work' },
+    { name: t.nav.contact, href: '/contact' },
   ];
 
   return (
@@ -70,7 +73,7 @@ export default function Navbar() {
                 scrolled ? 'text-[var(--brand-accent)]' : 'text-[#C79A63]'
               }`}
             >
-              Global Timber &amp; Product Sourcing
+              {t.nav.tagline}
             </span>
           </div>
         </Link>
@@ -80,7 +83,7 @@ export default function Navbar() {
             const isActive = pathname === link.href;
             return (
               <Link
-                key={link.name}
+                key={link.href}
                 href={link.href}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   scrolled
@@ -98,17 +101,19 @@ export default function Navbar() {
           })}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
+          <LanguageSelector scrolled={scrolled} />
           <DarkModeToggle />
           <button
             onClick={() => openEnquiry('contact')}
             className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#5C3A21] to-[#8B5E3C] hover:from-[#8B5E3C] hover:to-[#5C3A21] text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
           >
-            ENQUIRE
+            {t.common.enquire}
           </button>
         </div>
 
-        <div className="flex lg:hidden items-center gap-3">
+        <div className="flex lg:hidden items-center gap-2">
+          <LanguageSelector scrolled={scrolled} compact />
           <DarkModeToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -133,7 +138,7 @@ export default function Navbar() {
                 const isActive = pathname === link.href;
                 return (
                   <Link
-                    key={link.name}
+                    key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all ${
@@ -156,7 +161,7 @@ export default function Navbar() {
                   }}
                   className="w-full py-3.5 rounded-xl bg-[var(--brand-primary)] text-white text-center font-bold shadow-md hover:bg-[#8B5E3C] transition-colors"
                 >
-                  ENQUIRE
+                  {t.common.enquire}
                 </button>
               </div>
             </div>

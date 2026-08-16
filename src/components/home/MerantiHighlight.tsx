@@ -3,9 +3,11 @@
 import Image from 'next/image';
 import { ArrowRight, Building2, FileText, Globe, Sparkles, Users } from 'lucide-react';
 import { useEnquiry } from '@/context/EnquiryContext';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function MerantiHighlight() {
   const { openEnquiry } = useEnquiry();
+  const { t } = useLanguage();
 
   return (
     <section className="py-24 bg-[#191512] text-white relative overflow-hidden">
@@ -15,33 +17,31 @@ export default function MerantiHighlight() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C79A63]/20 text-[#E6C89C] text-xs font-semibold uppercase tracking-wider border border-[#C79A63]/30">
-              <Sparkles className="w-4 h-4 text-[#C79A63]" /> What We Do
+              <Sparkles className="w-4 h-4 text-[#C79A63]" /> {t.whatWeDo.badge}
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-serif font-bold leading-tight">WHAT WE DO</h2>
+            <h2 className="text-3xl sm:text-5xl font-serif font-bold leading-tight">{t.whatWeDo.title}</h2>
 
             <p className="text-base sm:text-xl text-gray-200 font-medium leading-relaxed">
-              RPSS Timbers connects international suppliers with Indian buyers. We source timber and
-              allied products according to genuine market requirements, while building long-term
-              supplier and buyer relationships.
+              {t.whatWeDo.body}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
                 <Globe className="w-6 h-6 text-[#C79A63]" />
-                <h4 className="text-sm font-bold text-white">Supplier Sourcing</h4>
+                <h4 className="text-sm font-bold text-white">{t.whatWeDo.supplierSourcing}</h4>
               </div>
               <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
                 <Building2 className="w-6 h-6 text-[#C79A63]" />
-                <h4 className="text-sm font-bold text-white">Product Sourcing</h4>
+                <h4 className="text-sm font-bold text-white">{t.whatWeDo.productSourcing}</h4>
               </div>
               <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
                 <Users className="w-6 h-6 text-[#C79A63]" />
-                <h4 className="text-sm font-bold text-white">Buyer-Supplier Connection</h4>
+                <h4 className="text-sm font-bold text-white">{t.whatWeDo.buyerSupplier}</h4>
               </div>
               <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
                 <FileText className="w-6 h-6 text-[#C79A63]" />
-                <h4 className="text-sm font-bold text-white">Trade Facilitation</h4>
+                <h4 className="text-sm font-bold text-white">{t.whatWeDo.tradeFacilitation}</h4>
               </div>
             </div>
 
@@ -50,13 +50,13 @@ export default function MerantiHighlight() {
                 onClick={() => openEnquiry('supplier')}
                 className="px-6 py-3.5 rounded-xl bg-[#C79A63] hover:bg-[#E6C89C] text-black font-bold text-sm shadow-xl transition-all flex items-center gap-2"
               >
-                FOR SUPPLIERS <ArrowRight className="w-4 h-4" />
+                {t.common.forSuppliers} <ArrowRight className="w-4 h-4" />
               </button>
               <button
                 onClick={() => openEnquiry('buyer')}
                 className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-all"
               >
-                FOR BUYERS
+                {t.common.forBuyers}
               </button>
             </div>
           </div>
@@ -73,12 +73,9 @@ export default function MerantiHighlight() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <span className="text-xs text-[#C79A63] font-bold uppercase tracking-widest">
-                  Key Areas
+                  {t.whatWeDo.keyAreas}
                 </span>
-                <h4 className="text-xl font-serif font-bold text-white">
-                  Supplier Sourcing | Product Sourcing | Buyer-Supplier Connection | Trade
-                  Facilitation
-                </h4>
+                <h4 className="text-xl font-serif font-bold text-white">{t.whatWeDo.keyAreasLine}</h4>
               </div>
             </div>
           </div>

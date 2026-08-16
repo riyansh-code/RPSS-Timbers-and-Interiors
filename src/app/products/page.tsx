@@ -4,57 +4,38 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowRight, CheckCircle2, Eye, Send, Sparkles } from 'lucide-react';
-import { PRODUCTS_DATA, Product } from '@/data/timberData';
+import type { Product } from '@/data/timberData';
 import ProductDetailModal from '@/components/ui/ProductDetailModal';
 import { useEnquiry } from '@/context/EnquiryContext';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function ProductsPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const { openEnquiry } = useEnquiry();
+  const { t, products } = useLanguage();
 
-  const buyerRequirements = [
-    'Product',
-    'Species/type',
-    'Grade',
-    'Dimensions',
-    'Quality',
-    'Moisture content',
-    'Quantity',
-    'Destination',
-    'Delivery requirements',
-    'Commercial parameters',
-  ];
-
-  const supplierTypes = [
-    'Manufacturers',
-    'Timber mills',
-    'Exporters',
-    'Wholesalers',
-    'Distributors',
-    'Stockholders',
-    'Suppliers with available or surplus inventory',
-  ];
+  const buyerRequirements = t.productsPage.buyerRequirements;
+  const supplierTypes = t.productsPage.supplierTypes;
 
   return (
     <div className="pt-24 bg-[var(--bg-primary)] min-h-screen">
       <section className="py-16 bg-gradient-to-r from-[#1F1F1F] via-[#5C3A21] to-[#1F1F1F] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <div className="subtitle-badge border border-[#C79A63]/40 text-[#E6C89C] mx-auto">
-            <Sparkles className="w-4 h-4 text-[#C79A63]" /> Products &amp; Sourcing
+            <Sparkles className="w-4 h-4 text-[#C79A63]" /> {t.productsPage.badge}
           </div>
           <h1 className="text-4xl sm:text-5xl font-serif font-bold text-white">
-            Our Product Focus
+            {t.productsPage.title}
           </h1>
           <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto">
-            RPSS is not limited to one product category. Our sourcing horizon is guided by genuine
-            Indian buyer requirements and commercially suitable international supply.
+            {t.productsPage.intro}
           </p>
         </div>
       </section>
 
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {PRODUCTS_DATA.map((product, index) => (
+          {products.map((product, index) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 24 }}
@@ -90,7 +71,7 @@ export default function ProductsPage() {
                     onClick={() => setSelectedProduct(product)}
                     className="flex items-center gap-1.5 text-xs font-bold text-[var(--brand-primary)] hover:text-[#C79A63] transition-colors"
                   >
-                    <Eye className="w-4 h-4" /> Details
+                    <Eye className="w-4 h-4" /> {t.common.details}
                   </button>
                 </div>
               </div>
@@ -102,7 +83,7 @@ export default function ProductsPage() {
             onClick={() => openEnquiry('product')}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[#8B5E3C] text-white font-bold text-sm shadow-md transition-all"
           >
-            <Send className="w-4 h-4" /> ENQUIRE ABOUT A PRODUCT
+            <Send className="w-4 h-4" /> {t.common.enquireAboutProduct}
           </button>
         </div>
       </section>
@@ -111,11 +92,9 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-5">
             <h2 className="text-3xl font-serif font-bold text-[var(--text-main)]">
-              Typical Buyer Requirements
+              {t.productsPage.buyerReqTitle}
             </h2>
-            <p className="text-sm text-[var(--text-muted)]">
-              When submitting a requirement, useful details include:
-            </p>
+            <p className="text-sm text-[var(--text-muted)]">{t.productsPage.buyerReqIntro}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {buyerRequirements.map((item) => (
                 <div key={item} className="flex items-center gap-2 text-sm text-[var(--text-main)]">
@@ -128,18 +107,15 @@ export default function ProductsPage() {
               onClick={() => openEnquiry('buyer')}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--brand-primary)] hover:bg-[#8B5E3C] text-white font-bold text-sm shadow-md transition-all"
             >
-              FOR BUYERS <ArrowRight className="w-4 h-4" />
+              {t.common.forBuyers} <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
           <div className="space-y-5">
             <h2 className="text-3xl font-serif font-bold text-[var(--text-main)]">
-              Supplier Opportunities
+              {t.productsPage.supplierOppTitle}
             </h2>
-            <p className="text-sm text-[var(--text-muted)]">
-              RPSS is interested in manufacturers, timber mills, exporters, wholesalers,
-              distributors, stockholders and suppliers with available or surplus inventory.
-            </p>
+            <p className="text-sm text-[var(--text-muted)]">{t.productsPage.supplierOppIntro}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {supplierTypes.map((item) => (
                 <div key={item} className="flex items-center gap-2 text-sm text-[var(--text-main)]">
@@ -152,7 +128,7 @@ export default function ProductsPage() {
               onClick={() => openEnquiry('supplier')}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#C79A63] hover:bg-[#E6C89C] text-black font-bold text-sm shadow-md transition-all"
             >
-              FOR SUPPLIERS <ArrowRight className="w-4 h-4" />
+              {t.common.forSuppliers} <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
