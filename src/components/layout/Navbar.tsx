@@ -42,10 +42,10 @@ export default function Navbar() {
           : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-5 text-white'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 sm:gap-4 group">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 grid grid-cols-[1fr_auto] lg:grid-cols-[minmax(0,1.1fr)_auto_minmax(0,1.1fr)] items-center gap-x-6 xl:gap-x-10">
+        <Link href="/" className="flex items-center gap-3 sm:gap-4 group min-w-0 justify-self-start">
           <div
-            className={`relative w-[4.5rem] h-[4.5rem] sm:w-20 sm:h-20 lg:w-24 lg:h-24 shrink-0 rounded-full overflow-hidden ring-2 shadow-lg group-hover:scale-105 transition-transform ${
+            className={`relative w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] lg:w-20 lg:h-20 shrink-0 rounded-full overflow-hidden ring-2 shadow-lg group-hover:scale-105 transition-transform ${
               scrolled
                 ? 'bg-white ring-[var(--border-color)]'
                 : 'bg-white ring-white/80'
@@ -55,21 +55,21 @@ export default function Navbar() {
               src="/images/logo.png"
               alt="RPSS Timbers logo"
               fill
-              sizes="(max-width: 640px) 72px, (max-width: 1024px) 80px, 96px"
+              sizes="(max-width: 640px) 64px, (max-width: 1024px) 72px, 80px"
               className="object-contain p-1"
               priority
             />
           </div>
-          <div>
+          <div className="min-w-0">
             <span
-              className={`block font-serif font-bold text-lg sm:text-xl tracking-tight ${
+              className={`block font-serif font-bold text-lg sm:text-xl tracking-tight truncate ${
                 scrolled ? 'text-[var(--text-main)]' : 'text-white'
               }`}
             >
               RPSS TIMBERS
             </span>
             <span
-              className={`block text-[10px] uppercase tracking-widest font-semibold ${
+              className={`block text-[10px] uppercase tracking-widest font-semibold truncate ${
                 scrolled ? 'text-[var(--brand-accent)]' : 'text-[#C79A63]'
               }`}
             >
@@ -78,14 +78,14 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+        <nav className="hidden lg:flex items-center justify-center gap-1 xl:gap-2">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3.5 xl:px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
                   scrolled
                     ? isActive
                       ? 'text-[#C79A63] font-semibold bg-[var(--bg-primary)]'
@@ -101,19 +101,19 @@ export default function Navbar() {
           })}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center justify-self-end gap-4 xl:gap-5">
           <LanguageSelector scrolled={scrolled} />
           <DarkModeToggle />
           <button
             onClick={() => openEnquiry('contact')}
-            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#5C3A21] to-[#8B5E3C] hover:from-[#8B5E3C] hover:to-[#5C3A21] text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#5C3A21] to-[#8B5E3C] hover:from-[#8B5E3C] hover:to-[#5C3A21] text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
           >
             {t.common.enquire}
           </button>
         </div>
 
-        <div className="flex lg:hidden items-center gap-2">
-          <LanguageSelector scrolled={scrolled} compact />
+        <div className="flex lg:hidden items-center justify-self-end gap-3">
+          <LanguageSelector scrolled={scrolled} />
           <DarkModeToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
