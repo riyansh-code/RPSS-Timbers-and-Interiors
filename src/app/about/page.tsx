@@ -2,22 +2,15 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import {
-  Award,
-  CheckCircle2,
-  Globe,
-  Heart,
-  Target,
-  Users,
-} from 'lucide-react';
+import { Award, CheckCircle2, Globe, Heart, Target, Users } from 'lucide-react';
 import CTABanner from '@/components/home/CTABanner';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function AboutPage() {
   const { t } = useLanguage();
   const experience = t.about.experienceItems;
-  const whyRpss = t.about.whyItems;
   const sourcing = t.about.sourcing;
+  const whyRpss = t.about.whyItems;
 
   return (
     <div className="pt-24 bg-[var(--bg-primary)]">
@@ -34,6 +27,52 @@ export default function AboutPage() {
           <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto font-light">
             {t.about.intro}
           </p>
+        </div>
+      </section>
+
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-6 space-y-6">
+            <div className="subtitle-badge">
+              <Users className="w-4 h-4 text-[#8B5E3C]" /> {t.about.storyBadge}
+            </div>
+            <h3 className="text-2xl font-serif font-bold text-[var(--text-main)]">
+              {t.about.storyTitle}
+            </h3>
+            <p className="text-base text-[var(--text-muted)] leading-relaxed">
+              {t.about.storyIntro}
+            </p>
+            <p className="text-base text-[var(--text-muted)] leading-relaxed">
+              {t.about.storyIntro2}
+            </p>
+            {t.about.storyParagraphs.map((paragraph, idx) => (
+              <p key={`story-${idx}`} className="text-base text-[var(--text-muted)] leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+            <h3 className="text-2xl font-serif font-bold text-[var(--text-main)] pt-2">
+              {t.about.todayTitle}
+            </h3>
+            {t.about.todayParagraphs.map((paragraph, idx) => (
+              <p key={`today-${idx}`} className="text-base text-[var(--text-muted)] leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+            <p className="text-base font-serif font-bold text-[var(--text-main)] leading-relaxed pt-2">
+              {t.about.storyClosing}
+            </p>
+          </div>
+
+          <div className="lg:col-span-6 relative">
+            <div className="relative h-[450px] rounded-3xl overflow-hidden shadow-2xl border-4 border-[var(--bg-card)]">
+              <Image
+                src="/images/ov-kd-pine.jpg"
+                alt="KD pine and sawn timber sourcing"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

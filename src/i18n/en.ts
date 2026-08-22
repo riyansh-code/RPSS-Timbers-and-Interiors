@@ -117,6 +117,23 @@ export const en = {
     titleHighlight: ' Building the Next Generation of Global Sourcing.',
     intro:
       'RPSS was established in 1974 by Mr. Sham Sunder Arora in Jammu as a timber wholesaler and commission agent. The business remains family-operated, with established operations in Jammu & Kashmir, Amritsar and Gandhidham (Gujarat).',
+    storyBadge: 'Our Story',
+    storyTitle: 'A Family Business Built on Timber',
+    storyIntro:
+      'RPSS represents Ram Parkash Sham Sunder, reflecting the family roots and generations behind the business.',
+    storyIntro2:
+      'RPSS was established in 1974 by Mr. Sham Sunder Arora, who built the business on a strong foundation in the timber trade and long-standing relationships with customers and suppliers.',
+    storyParagraphs: [
+      'In 2004, Puneet Arora joined the family business, becoming part of the second generation of RPSS. Since then, he has been involved across the business, including sales, purchasing, customer relationships, supplier management, sourcing, pricing, inventory and day-to-day operations.',
+      'Over the past 20+ years, RPSS has grown from its traditional wholesale timber roots into timber imports and international sourcing, connecting overseas suppliers with buyers in India.',
+    ],
+    todayTitle: 'Today',
+    todayParagraphs: [
+      'Today, RPSS combines more than 50 years of family experience in the Indian timber trade with international sourcing capabilities, including an Australian sourcing presence.',
+      'The business continues to serve the Indian market while building relationships with overseas suppliers of timber, wood products and related building materials.',
+    ],
+    storyClosing:
+      'Strong product knowledge. Trusted relationships. Long-term experience in timber.',
     experienceBadge: 'Our Experience',
     experienceTitle: 'Our Experience',
     experienceIntro:
