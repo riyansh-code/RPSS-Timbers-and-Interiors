@@ -54,7 +54,7 @@ const jsonLd = {
   name: 'RPSS Timbers',
   description: 'Connecting International & Australian Suppliers with Indian Markets.',
   url: 'https://www.rpsstimbers.com',
-  email: 'rpss1974@gmail.com',
+  email: 'puneet.arora2702@gmail.com',
   telephone: ['+919419184550', '+61431764492'],
   address: [
     {

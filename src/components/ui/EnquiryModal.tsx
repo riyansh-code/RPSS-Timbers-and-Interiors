@@ -10,6 +10,8 @@ import type { Dictionary } from '@/i18n';
 
 type EnquiryFields = Dictionary['enquiry']['fields'];
 
+const CONTACT_EMAIL = 'puneet.arora2702@gmail.com';
+
 const inputClass =
   'w-full px-4 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-[#C79A63]';
 const labelClass = 'block text-xs font-semibold uppercase text-[var(--text-muted)] mb-1';
@@ -35,8 +37,24 @@ export default function EnquiryModal() {
     if (isOpen) setSubmitted(false);
   }, [isOpen, enquiryType]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.append('_subject', `RPSS Timbers - ${meta.heading}`);
+    formData.append('_captcha', 'false');
+    formData.append('_template', 'table');
+
+    try {
+      await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      });
+    } catch {
+      // submission failed silently; user can still reach us via mailto links
+    }
+
     setSubmitted(true);
     try {
       confetti({ particleCount: 80, spread: 65, origin: { y: 0.6 } });

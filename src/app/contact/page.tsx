@@ -109,10 +109,10 @@ export default function ContactPage() {
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#C79A63] shrink-0" />
                 <a
-                  href="mailto:rpss1974@gmail.com"
+                  href="mailto:puneet.arora2702@gmail.com"
                   className="hover:text-[var(--brand-primary)]"
                 >
-                  rpss1974@gmail.com
+                  puneet.arora2702@gmail.com
                 </a>
               </div>
             </div>
